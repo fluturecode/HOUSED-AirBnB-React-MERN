@@ -39,6 +39,6 @@ const listingSchema = new mongoose.Schema(
   }
 );
 
-const Listing = mongoose.model('Listing', ListingSchema);
+const Listing = mongoose.model('Listing', listingSchema);
 
 module.exports = Listing;

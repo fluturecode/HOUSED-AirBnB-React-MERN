@@ -10,7 +10,7 @@ const bookingSchema = new mongoose.Schema(
 
     address: {
       type: String,
-      require: true
+      required: true
     },
 
     listing_id: {
@@ -20,7 +20,7 @@ const bookingSchema = new mongoose.Schema(
 
     price: {
       type: Number,
-      require: true
+      required: true
     },
 
     guest: {

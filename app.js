@@ -8,7 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
 //
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files

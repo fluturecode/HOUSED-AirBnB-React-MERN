@@ -15,7 +15,7 @@ const bookingSchema = new mongoose.Schema(
 
     listing_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Listing'
+      ref: 'Listings'
     },
 
     price: {
@@ -34,6 +34,6 @@ const bookingSchema = new mongoose.Schema(
   }
 );
 
-const Booking = mongoose.model('Booking', bookingSchema);
+const Booking = mongoose.model('Bookings', bookingSchema);
 
 module.exports = Booking;

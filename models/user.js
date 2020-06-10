@@ -12,22 +12,19 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true
-    }
-  },
-  {
+    },
     lastName: {
       type: String,
       required: true,
       trim: true
     },
-
     birthday: {
       type: Date,
       required: true,
       trim: true,
       format: Date
     },
-
+    
     email: {
       type: String,
       required: true,
@@ -40,13 +37,13 @@ const userSchema = new mongoose.Schema(
         }
       }
     },
-
     phone: {
       type: Number,
       maxlength: 10,
       minlength: 10,
       required: true
     },
+
 
     password: {
       type: String,
@@ -91,12 +88,12 @@ const userSchema = new mongoose.Schema(
 
     listing_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Listing'
+      ref: 'Listings'
     },
 
     booking_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Booking'
+      ref: 'Bookings'
     },
 
     license: {
@@ -116,7 +113,9 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: Buffer
     }
+    // you can put it as a type of "String" must be a url if so
   },
+  
   {
     timestamps: true
   }
@@ -124,14 +123,14 @@ const userSchema = new mongoose.Schema(
 
 // Create relation betwen user and listing
 userSchema.virtual('listings', {
-  ref: 'Listing',
+  ref: 'Listings',
   localField: '_id',
   foreignField: 'owner'
 });
 
 // Create relation betwen user and booking
 userSchema.virtual('bookings', {
-  ref: 'Booking',
+  ref: 'Bookings',
   localField: '_id',
   foreignField: 'guest'
 });
@@ -193,7 +192,7 @@ userSchema.methods.toJSON = function () {
   const user = this;
   const userObject = user.toObject();
   if (userObject.birthday) {
-    useObject.birthday = moment(userObject.birthday).format('YYYY-MM-DD');
+    userObject.birthday = moment(userObject.birthday).format('YYYY-MM-DD');
   }
   return userObject;
 };

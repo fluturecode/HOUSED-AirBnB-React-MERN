@@ -1,14 +1,22 @@
 require('./db/mongoose');
-const express = require('express'),
-  cors = require('cors');
+
+const express = require('express');
+const cors = require('cors');
+
+// import routes
+const userRouter = require('./routes/user');
+const listingRouter = require('./routes/listing');
+const bookingRouter = require('./routes/booking');
 
 const app = express();
-
-//Middleware
 app.use(cors());
+
 app.use(express.json());
 
-
+// Call routes
+app.use(userRouter);
+app.use(listingRouter);
+app.use(bookingRouter);
 //
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files

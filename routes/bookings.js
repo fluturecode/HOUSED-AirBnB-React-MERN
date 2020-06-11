@@ -13,8 +13,7 @@ router.get('/bookings', auth, async (req, res) => {
         path: 'bookings',
         options: {
           limit: parseInt(req.query.limit),
-          skip: parseInt(req.query.skip),
-          sort
+          skip: parseInt(req.query.skip)
         }
       })
       .execPopulate();

@@ -18,7 +18,7 @@ router.get('/bookings', auth, async (req, res) => {
         }
       })
       .execPopulate();
-    res.send(req.user.listings);
+    res.send(req.user.bookings);
   } catch (e) {
     res.status(500).send();
   }

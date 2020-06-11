@@ -32,6 +32,10 @@ const listingSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
+    },
+    booking_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Bookings'
     }
   },
   {

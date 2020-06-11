@@ -2,15 +2,59 @@ const express = require('express');
 const router = new express.Router();
 const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
-
 const Listing = require('../models/listing');
 
-// Make Comments look alike and optimal
-// Test Routes
 
-// ***********************************************//
+
+
+// Test Routes -In progress.
+
+
+
+// Create a listing
+
+router.post('/listings', auth, async (req, res) => {
+  const listing = new Listing({
+    ...req.body,
+    owner: req.user._id
+  });
+  try {
+    listing.save();
+    res.status(201).send(listing);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+
+// Update a listing
+
+router.patch('/listings/:id', auth, async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ['title', 'description', 'address', 'images', 'price'];
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
+  if (!isValidOperation) {
+    return res.status(400).send({ error: 'Invalid updates!' });
+  }
+  try {
+    const listing = await Listing.findOne({
+      _id: req.params.id,
+      owner: req.user._id
+    });
+    if (!listing) {
+      return res.status(404).send();
+    }
+    updates.forEach((update) => (listing[update] = req.body[update]));
+    await listing.save();
+    res.send(listing);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 // Get all listings
-// ***********************************************//
 
 router.get('/listing', auth, async (req, res) => {
   const match = {};
@@ -41,9 +85,8 @@ router.get('/listing', auth, async (req, res) => {
   }
 });
 
-// ***********************************************//
+
 // Get a specific listings
-// ***********************************************//
 
 router.get('/listings/:id', auth, async (req, res) => {
   const _id = req.params.id;
@@ -61,55 +104,13 @@ router.get('/listings/:id', auth, async (req, res) => {
   }
 });
 
-// ***********************************************//
-// Create a listing
-// ***********************************************//
-router.post('/listings', auth, async (req, res) => {
-  const listing = new Listing({
-    ...req.body,
-    owner: req.user._id
-  });
-  try {
-    listing.save();
-    res.status(201).send(listing);
-  } catch (e) {
-    res.status(400).send(e);
-  }
-});
 
-// Verify what updates we are creating
 
-// ***********************************************//
-// Update a listing
-// ***********************************************//
-router.patch('/listings/:id', auth, async (req, res) => {
-  const updates = Object.keys(req.body);
-  const allowedUpdates = ['title', 'description', 'address', 'images', 'price'];
-  const isValidOperation = updates.every((update) =>
-    allowedUpdates.includes(update)
-  );
-  if (!isValidOperation) {
-    return res.status(400).send({ error: 'Invalid updates!' });
-  }
-  try {
-    const listing = await Listing.findOne({
-      _id: req.params.id,
-      owner: req.user._id
-    });
-    if (!listing) {
-      return res.status(404).send();
-    }
-    updates.forEach((update) => (listing[update] = req.body[update]));
-    await listing.save();
-    res.send(listing);
-  } catch (e) {
-    res.status(400).send(e);
-  }
-});
 
-// ***********************************************//
+
+
 // Delete a listing
-// ***********************************************//
+
 router.delete('/listings/:id', auth, async (req, res) => {
   try {
     const listing = await Listing.findOneAndDelete({

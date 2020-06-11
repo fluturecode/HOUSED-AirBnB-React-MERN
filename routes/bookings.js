@@ -66,7 +66,7 @@ router.post('/bookings', auth, async (req, res) => {
   }
 });
 
-// Update a listing
+// Update a booking
 router.patch('/bookings/:id', auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['title', 'description', 'address', 'images', 'price'];
@@ -92,7 +92,7 @@ router.patch('/bookings/:id', auth, async (req, res) => {
   }
 });
 
-// Delete a listing
+// Delete a booking
 router.delete('/bookings/:id', auth, async (req, res) => {
   try {
     const booking = await Booking.findOneAndDelete({

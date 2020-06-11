@@ -39,6 +39,7 @@ router.post('/users', async (req, res) => {
 
 
 // Upload a user avatar
+// ROUTE HAS NOT BEEN TESTED. WAITING ON MORE INFO BEFORE RUNNING
 
 const upload = multer({
     limits: {

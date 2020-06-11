@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const moment = require('moment');
-const Listing = require('./listing');
-const Booking = require('./booking');
+const Listings = require('./listings');
+// we're currently not calling Bookings
+const Bookings = require('./bookings');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -18,13 +19,15 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+
+    // Date is giving back a -1 day.
     birthday: {
       type: Date,
       required: true,
       trim: true,
       format: Date
     },
-    
+
     email: {
       type: String,
       required: true,
@@ -44,7 +47,6 @@ const userSchema = new mongoose.Schema(
       required: true
     },
 
-
     password: {
       type: String,
       required: true,
@@ -59,11 +61,13 @@ const userSchema = new mongoose.Schema(
       }
     },
 
+    //should default to Guest, if not then host.
     isHost: {
       type: Boolean,
       required: true
     },
 
+    //Should return to Captital letter
     gender: {
       type: String,
       enum: ['Male', 'Female', 'Other'],
@@ -80,22 +84,23 @@ const userSchema = new mongoose.Schema(
         }
       }
     },
-
+    // Return Capital Letter
     preferencesExchange: {
       type: String,
       enum: ['Pay', 'Work', 'Both']
     },
 
+    // Do we need or will we have an ID already created by Database model?
     listing_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Listings'
     },
-
+    // Do we need or will we have an ID already created by Database model?
     booking_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Bookings'
     },
-
+    // Are we really gonna use this? If so where do we build the logic for the image it accepts.
     license: {
       type: String,
       required: true
@@ -115,7 +120,7 @@ const userSchema = new mongoose.Schema(
     }
     // you can put it as a type of "String" must be a url if so
   },
-  
+
   {
     timestamps: true
   }
@@ -181,7 +186,7 @@ userSchema.pre('save', async function (next) {
 // Delete user listing when user is removed.
 userSchema.pre('remove', async function (next) {
   const user = this;
-  await Listing.deleteMany({
+  await Listings.deleteMany({
     owner: user._id
   });
   next();

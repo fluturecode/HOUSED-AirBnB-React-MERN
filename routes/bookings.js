@@ -52,7 +52,7 @@ router.get('/bookings/:id', auth, async (req, res) => {
   }
 });
 
-// Create a listing
+// Create a booking
 router.post('/bookings', auth, async (req, res) => {
   const booking = new Booking({
     ...req.body,

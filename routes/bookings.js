@@ -57,7 +57,7 @@ router.post('/bookings', auth, async (req, res) => {
 // Update a booking
 router.patch('/bookings/:id', auth, async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['title', 'description', 'address', 'images', 'price'];
+  const allowedUpdates = ['title', 'address', 'price', 'guest'];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );

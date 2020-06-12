@@ -95,7 +95,7 @@ const userSchema = new mongoose.Schema(
     // Are we really gonna use this? If so where do we build the logic for the image it accepts.
     license: {
       type: String,
-      required: true
+     
     },
     tokens: [
       {

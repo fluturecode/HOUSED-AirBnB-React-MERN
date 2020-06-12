@@ -1,22 +1,16 @@
-import React, { createContext, useState } from 'react';
+import React, { useState, createContext } from 'react';
 
-export const AppContext = createContext();
+const AppContext = createContext();
 
-export const AppContextProvider = ({ children }) => {
-  const [contextMessage, setContextMessage] = useState('');
-
-  const contextMethod = () => {
-    setContextMessage('Hello from client/src/context/AppContext.jsx');
-  };
+const AppContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <AppContext.Provider
-      value={{
-        contextMessage,
-        contextMethod
-      }}
-    >
+    <AppContext.Provider value={{ user, setUser, loggedIn, setLoggedIn }}>
       {children}
     </AppContext.Provider>
   );
 };
+
+export { AppContext, AppContextProvider };

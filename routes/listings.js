@@ -4,15 +4,9 @@ const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
 const Listing = require('../models/listing');
 
-
-
-
 // Test Routes -In progress.
 
-
-
 // Create a listing
-
 router.post('/listings', auth, async (req, res) => {
   const listing = new Listing({
     ...req.body,
@@ -28,7 +22,6 @@ router.post('/listings', auth, async (req, res) => {
 
 
 // Update a listing
-
 router.patch('/listings/:id', auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['title', 'description', 'address', 'images', 'price'];
@@ -55,27 +48,14 @@ router.patch('/listings/:id', auth, async (req, res) => {
 });
 
 // Get all listings
-
 router.get('/listing', auth, async (req, res) => {
-  const match = {};
-  const sort = {};
-  if (req.query.completed) {
-    match.completed = req.query.completed === 'true';
-  }
-  if (req.query.sortBy) {
-    const parts = req.query.sortBy.split(':');
-    sort[parts[0]] = parts[1] === 'desc' ? -1 : 1;
-  }
-
   try {
     await req.user
       .populate({
         path: 'listings',
-        match,
         options: {
           limit: parseInt(req.query.limit),
           skip: parseInt(req.query.skip),
-          sort
         }
       })
       .execPopulate();
@@ -85,9 +65,7 @@ router.get('/listing', auth, async (req, res) => {
   }
 });
 
-
-// Get a specific listings
-
+// Get a specific listing
 router.get('/listings/:id', auth, async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id)) {
@@ -104,13 +82,7 @@ router.get('/listings/:id', auth, async (req, res) => {
   }
 });
 
-
-
-
-
-
 // Delete a listing
-
 router.delete('/listings/:id', auth, async (req, res) => {
   try {
     const listing = await Listing.findOneAndDelete({

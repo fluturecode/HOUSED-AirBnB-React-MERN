@@ -16,7 +16,8 @@ const listingSchema = new mongoose.Schema(
 
     address: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
 
     images: {
@@ -25,7 +26,7 @@ const listingSchema = new mongoose.Schema(
     },
 
     price: {
-      type: Number,
+      type: String,
       required: true
     },
 

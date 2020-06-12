@@ -14,8 +14,6 @@ const dotenv = require('dotenv')
 //     forgotPasswordEmail
 // } = require('../emails/account');
 
-
-
 // Create a user
 
 router.post('/users', async (req, res) => {
@@ -31,9 +29,6 @@ router.post('/users', async (req, res) => {
       
     }
   });
-
-
-
 
 // Upload a user avatar
 // ROUTE HAS NOT BEEN TESTED. WAITING ON MORE INFO BEFORE RUNNING
@@ -72,8 +67,6 @@ const upload = multer({
       res.status(400).send({ error: error.message });
     }
   );
-
-
 
   
 // Login a user

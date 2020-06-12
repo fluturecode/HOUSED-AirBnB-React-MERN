@@ -91,6 +91,7 @@ const userSchema = new mongoose.Schema(
     //   ref: 'Bookings'
     // },
     // Are we really gonna use this? If so where do we build the logic for the image it accepts.
+
     license: {
       type: String
     },

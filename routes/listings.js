@@ -20,7 +20,6 @@ router.post('/listings', auth, async (req, res) => {
   }
 });
 
-
 // Update a listing
 router.patch('/listings/:id', auth, async (req, res) => {
   const updates = Object.keys(req.body);
@@ -28,6 +27,7 @@ router.patch('/listings/:id', auth, async (req, res) => {
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
+
   if (!isValidOperation) {
     return res.status(400).send({ error: 'Invalid updates!' });
   }
@@ -55,7 +55,7 @@ router.get('/listing', auth, async (req, res) => {
         path: 'listings',
         options: {
           limit: parseInt(req.query.limit),
-          skip: parseInt(req.query.skip),
+          skip: parseInt(req.query.skip)
         }
       })
       .execPopulate();

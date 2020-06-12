@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const moment = require('moment');
 const Listing = require('./listing');
-// we're currently not calling Bookings
-const Booking = require('./booking');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const userSchema = new mongoose.Schema(
@@ -94,8 +92,7 @@ const userSchema = new mongoose.Schema(
     // },
     // Are we really gonna use this? If so where do we build the logic for the image it accepts.
     license: {
-      type: String,
-     
+      type: String
     },
     tokens: [
       {
@@ -135,26 +132,27 @@ userSchema.methods.toJSON = function () {
   return userObject;
 };
 
-
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET, { expiresIn: '7 days' });
+  const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET, {
+    expiresIn: '7 days'
+  });
   user.tokens = user.tokens.concat({ token });
   await user.save();
   return token;
 };
 
 // find user by email and password
-userSchema.statics.findByCredentials = async (email, password) => { 
+userSchema.statics.findByCredentials = async (email, password) => {
   const user = await User.findOne({ email });
- 
+
   if (!user) {
     console.log('checking user', user);
     throw new Error('Unable to log in email.');
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
-  
+
   if (!isMatch) {
     throw new Error('Unable to because of password.');
   }

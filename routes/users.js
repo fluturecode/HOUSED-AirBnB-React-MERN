@@ -4,18 +4,15 @@ const User = require('../models/user');
 const auth = require('../middleware/auth.js');
 const multer = require('multer');
 const bcrypt = require('bcryptjs');
+const sharp = require('sharp');
+const sgMail = require('@sendgrid/mail');
+const dotenv = require('dotenv')
 // const sharp = require('sharp');
 // const {
 //     sendWelcomeEmail,
 //     sendCancellationEmail,
 //     forgotPasswordEmail
 // } = require('../emails/account');
-
-
-
-// Test routes
-
-
 
 
 
@@ -42,6 +39,7 @@ router.post('/users', async (req, res) => {
 // ROUTE HAS NOT BEEN TESTED. WAITING ON MORE INFO BEFORE RUNNING
 
 const upload = multer({
+  storage: multer.memoryStorage(),
     limits: {
       fileSize: 100000
     },
@@ -65,7 +63,7 @@ const upload = multer({
         })
         .png()
         .toBuffer();
-  
+ 
       req.user.avatar = buffer;
       await req.user.save();
       res.send();
@@ -105,13 +103,11 @@ router.get('/users/me', auth, async (req, res) => {
 
 
   
-// Update a user
-
-// What are we actually updating ?
+// Update a User
 
 router.patch('/users/me', auth, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ['name', 'email', 'password', 'age'];
+    const allowedUpdates = ['firstName', 'lastName', 'email', 'birthday', 'phone', 'gender', 'description', 'preferencesExchange'];
     const isValidOperation = updates.every((update) =>
       allowedUpdates.includes(update)
     );
@@ -130,7 +126,6 @@ router.patch('/users/me', auth, async (req, res) => {
   
 
   // Serve a user's avatar
-  
   // Allows us to move our avatar around?
   
   router.get('/users/:id/avatar', async (req, res) => {
@@ -172,7 +167,7 @@ router.post('/users/logoutAll', auth, async (req, res) => {
     try {
       req.user.tokens = [];
       await req.user.save();
-      res.send();
+      res.send({ message: 'You have been logged out of all devices!'});
     } catch (e) {
       res.status(500).send();
     }
@@ -181,9 +176,23 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 
 
   
+// Reset Password Email Request 
+
+router.get('/users/password/forgot', async (req, res) => {
+  try {
+    const user = await User.findOne({
+      email: req.body.email
+    });  
+    const forgotPasswordEmail = {email: user.email, token: user.tokens[0].token, password: user.password}
+    res.send(forgotPasswordEmail)
+  
+  } catch (e) {
+    res.status(400).send(e.toString());
+  }
+});
 
 
-// Reset Password
+// Reset Password -NOT BEING BUILT YET.
 
 router.get('/users/password/reset', async (req, res) => {
   let newPassword = await bcrypt.hash(req.query.password, 8);
@@ -198,7 +207,6 @@ router.get('/users/password/reset', async (req, res) => {
     if (user.tokens[0].token !== req.query.token) {
       throw new Error();
     }
-
     await User.findOneAndUpdate(filter, update);
     res.redirect('/');
   } catch (e) {
@@ -207,38 +215,23 @@ router.get('/users/password/reset', async (req, res) => {
 });
 
 
-// Reset Password Email Request
-
-router.get('/users/password/forgot', async (req, res) => {
-  try {
-    const user = await User.findOne({
-      email: req.query.email
-    });
-
-    forgotPasswordEmail(user.email, user.tokens[0].token, req.query.password);
-    res.status(200).send();
-  } catch (e) {
-    res.status(400).send(e.toString());
-  }
-});
 
 
 
 
-// ***********************************************//
 // Delete a user's avatar
-// ***********************************************//
 
-router.delete('/users/me/avatar', auth, async (req, res) => {
+
+router.delete('/users/me/avatar/delete', auth, async (req, res) => {
     req.user.avatar = undefined;
     await req.user.save();
-    res.send();
+    res.send({ message: "You have deleted your avatar."});
   });
 
 
-// ***********************************************//
+
 // Delete a user
-// ***********************************************//
+
 
 router.delete('/users/me', auth, async (req, res) => {
   try {

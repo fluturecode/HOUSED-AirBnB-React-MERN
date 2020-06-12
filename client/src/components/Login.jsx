@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
     await axios({
       method: 'POST',
-      url: `${process.env.REACT_APP_SERVER_URL}/users/login`,
+      url: '/users/login',
       data: {
         email,
         password

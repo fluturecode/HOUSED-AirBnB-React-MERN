@@ -1,0 +1,9 @@
+.form-group {
+    width: 300px;
+    text-align: center;
+}
+
+.sign-up-div {
+    display: flex;
+    justify-content: center;
+}

@@ -14,6 +14,8 @@ const Signup = () => {
   const [preferenceExchange, setPreferenceExchange] = useState('');
   const [gender, setGender] = useState('');
   const [address, setAddress] = useState('');
+  const [passwordShow, setPasswordShow] = useState(false)
+
 
 
 
@@ -76,7 +78,7 @@ const Signup = () => {
         <div className="form-group">
           <label htmlFor="email">Password: </label>
           <input
-            type="password"
+            type={passwordShow ? 'text' : 'password'}
             name="password"
             placeholder="Enter password"
             value={password}
@@ -85,8 +87,8 @@ const Signup = () => {
             className="form-control"
             id="myInput"
           />
-          <i className="fa fa-eye password-icon" > </i>
-          
+          <input type="checkbox"  onChange={() => setPasswordShow(!passwordShow)}/>Show Password
+         
         </div>
 
 

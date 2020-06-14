@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
 const Listing = require('../models/listing');
 
-// Test Routes -In progress.
-
 // Create a listing
 router.post('/listings', auth, async (req, res) => {
   const listing = new Listing({
@@ -48,7 +46,7 @@ router.patch('/listings/:id', auth, async (req, res) => {
 });
 
 // Get all listings
-router.get('/listing', auth, async (req, res) => {
+router.get('/listings', auth, async (req, res) => {
   try {
     await req.user
       .populate({

@@ -4,9 +4,9 @@ const express = require('express');
 const cors = require('cors');
 
 // import routes
-const userRouter = require('./routes/user');
-const listingRouter = require('./routes/listing');
-const bookingRouter = require('./routes/booking');
+const userRouter = require('./routes/users');
+const listingRouter = require('./routes/listings');
+const bookingRouter = require('./routes/bookings');
 
 const app = express();
 app.use(cors());

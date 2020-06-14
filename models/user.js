@@ -178,6 +178,7 @@ userSchema.pre('remove', async function (next) {
   });
   next();
 });
+
 // Format the date sent back by mongo
 userSchema.methods.toJSON = function () {
   const user = this;

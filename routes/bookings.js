@@ -2,7 +2,6 @@ const express = require('express');
 const router = new express.Router();
 const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
-
 const Booking = require('../models/booking');
 
 // Create a booking

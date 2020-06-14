@@ -1,7 +1,8 @@
 const express = require('express');
-const listingRoutes = require('./routes/listings');
-const userRoutes = require('./routes/users');
-const bookingRoutes = require('./routes/bookings');
+const listingRoutes = require('./routes/listings')
+const userRoutes = require('./routes/users')
+const bookingRoutes = require('./routes/bookings')
+const mongoose = require('mongoose')
 require('./db/mongoose');
 
 const app = express();

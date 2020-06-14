@@ -4,23 +4,12 @@ const User = require('../models/user');
 const mongoose = require('mongoose');
 // const User = require('../models/user');
 
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URL, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
 const connection = mongoose.connection;
 connection.once('open', () => {
-    console.log("MongoDB database connection established successfully");
-  })
-
-
-//this is just to test our models with compass/mongodb
-// const me = new User({
-//   name: 'Liz',
-//   age: 39
-// });
-
-// me.save()
-//   .then(() => {
-//     console.log(me);
-//   })
-//   .catch((error) => {
-//     console.log('Error!', error);
-//   });
+  console.log('MongoDB database connection established successfully');
+});

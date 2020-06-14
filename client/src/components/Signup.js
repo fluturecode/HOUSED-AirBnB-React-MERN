@@ -20,7 +20,7 @@ const Signup = () => {
 
 
 
-  const signUp = async (email, password, name, birthday,description, preferenceExchange, gender, address, e) => {
+  const signUp = async (email, password, firstName, lastName, birthday,description, preferenceExchange, gender, address, e) => {
     e.preventDefault();
     await axios({
       method: 'POST',
@@ -134,14 +134,14 @@ const Signup = () => {
         </div>
 
      
-        <div className="form-group">
+        <div className="form-desc">
           <label htmlFor="name">Tell us a little about yourself. This is so the host can get to know you when you make a reservation.</label>
           <label> We'll help you out with some questions you can answer!</label>
           <p>Do you have a pet? Are you okay with staying with other guests as well? What type of stay are you looking for? </p>
-          <input
-            type="subject"
+          <textarea
+            type="text"
             name="text"
-            id="text"
+            id="description"
             placeholder="Housework, mechanic, etc..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -150,7 +150,35 @@ const Signup = () => {
           />
         </div>
 
+        <div className="form-group">
+          <label htmlFor="name">What would you perfer?</label>
+           <select
+            id="preferenceExchange"
+            value={preferenceExchange}
+            onChange={(e) => setPreferenceExchange(e.target.value)}
+            required
+            className="form-control"
+            >
+                <option value='0'> Pay</option>
+                <option value='1'> Work</option>
+                <option value='2'> Both</option>
+                </select>      
 
+            </div>
+
+            <div className="form-address">
+          <label htmlFor="text">Address: </label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+            className="form-control"
+          />
+        </div>
 
 
         <button type="submit" className="btn btn-primary actions">

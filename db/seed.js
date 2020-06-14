@@ -4,7 +4,7 @@ const assert = require('assert');
 const _ = require('lodash');
 
 // Connection URL
-const dbName = 'mongodb://127.0.0.1:27017/final';
+const url = 'mongodb://127.0.0.1:27017/final';
 
 // Database Name
 
@@ -15,7 +15,7 @@ const dbName = 'listings';
 MongoClient.connect(url, function (err, client) {
   assert.equal(null, err);
 
-  const db = client.db(dbname);
+  const db = client.db(dbName);
 
   // get access to the relevant collections
 
@@ -27,7 +27,7 @@ MongoClient.connect(url, function (err, client) {
   // make a bunch of listings
 
   let users = [];
-  for (let i = 0; i < 5000; i += 1) {
+  for (let i = 0; i < 10; i += 1) {
     const title = faker.name.title();
     const description = faker.commerce.productMaterial();
     const streetAddress = faker.address.streetAddress();

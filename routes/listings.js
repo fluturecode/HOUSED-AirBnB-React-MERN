@@ -48,7 +48,11 @@ router.patch('/listings/:id', auth, async (req, res) => {
 // Get all listings
 router.get('/listings', async (req, res) => {
   try {
-    Listing.find('listings').toArray((res) => console.log(res));
+    Listing.find()
+      .exec()
+      .then((result) => {
+        res.status(200).json(result);
+      });
     // await req.user
     // populate({
     //   path: 'listings',
@@ -59,7 +63,7 @@ router.get('/listings', async (req, res) => {
     // }).execPopulate();
     // res.send(req.listings);
   } catch (e) {
-    res.status(500).send();
+    res.status(500).json({ message: e });
   }
 });
 

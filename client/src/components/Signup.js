@@ -167,10 +167,10 @@ const Signup = () => {
             </div>
 
             <div className="form-address">
-          <label htmlFor="text">Address: </label>
+          <label htmlFor="text">Upload a picture of your state issued ID: </label>
           <input
             type="text"
-            name="address"
+            name="image"
             id="address"
             placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
             value={address}

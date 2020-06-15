@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-import "../styles/signup.css"
+import '../styles/signup.css';
 
 const Signup = () => {
   const { setUser, setLoggedIn } = useContext(AppContext);
@@ -14,17 +14,24 @@ const Signup = () => {
   const [preferenceExchange, setPreferenceExchange] = useState('');
   const [gender, setGender] = useState('');
   const [address, setAddress] = useState('');
-  const [passwordShow, setPasswordShow] = useState(false)
+  const [passwordShow, setPasswordShow] = useState(false);
 
-
-
-
-
-  const signUp = async (email, password, firstName, lastName, birthday,description, preferenceExchange, gender, address, e) => {
+  const signUp = async (
+    email,
+    password,
+    firstName,
+    lastName,
+    birthday,
+    description,
+    preferenceExchange,
+    gender,
+    address,
+    e
+  ) => {
     e.preventDefault();
     await axios({
       method: 'POST',
-      url: `${process.env.REACT_APP_SERVER_URL}/users`,
+      url: `/users`,
       data: {
         email,
         password,
@@ -57,10 +64,24 @@ const Signup = () => {
 
   return (
     <div className="sign-up-div">
-      <form onSubmit={(e) => signUp(email, password, firstName, lastName, birthday, description, preferenceExchange, gender, address, e)}>
-      
+      <form
+        onSubmit={(e) =>
+          signUp(
+            email,
+            password,
+            firstName,
+            lastName,
+            birthday,
+            description,
+            preferenceExchange,
+            gender,
+            address,
+            e
+          )
+        }
+      >
         <div className="sign-up-intro">
-            Follow the steps to sign up and find your perfect stay!
+          Follow the steps to sign up and find your perfect stay!
         </div>
         <div className="form-group">
           <label htmlFor="email">Email: </label>
@@ -87,10 +108,12 @@ const Signup = () => {
             className="form-control"
             id="myInput"
           />
-          <input type="checkbox"  onChange={() => setPasswordShow(!passwordShow)}/>Show Password
-         
+          <input
+            type="checkbox"
+            onChange={() => setPasswordShow(!passwordShow)}
+          />
+          Show Password
         </div>
-
 
         <div className="form-group">
           <label htmlFor="name">First Name: </label>
@@ -118,8 +141,8 @@ const Signup = () => {
             className="form-control"
           />
         </div>
-        
-         <div className="form-group">
+
+        <div className="form-group">
           <label htmlFor="date">Birthday </label>
           <input
             type="date"
@@ -133,11 +156,16 @@ const Signup = () => {
           />
         </div>
 
-     
         <div className="form-desc">
-          <label htmlFor="name">Tell us a little about yourself. This is so the host can get to know you when you make a reservation.</label>
+          <label htmlFor="name">
+            Tell us a little about yourself. This is so the host can get to know
+            you when you make a reservation.
+          </label>
           <label> We'll help you out with some questions you can answer!</label>
-          <p>Do you have a pet? Are you okay with staying with other guests as well? What type of stay are you looking for? </p>
+          <p>
+            Do you have a pet? Are you okay with staying with other guests as
+            well? What type of stay are you looking for?{' '}
+          </p>
           <textarea
             type="text"
             name="text"
@@ -152,21 +180,20 @@ const Signup = () => {
 
         <div className="form-group">
           <label htmlFor="name">What would you perfer?</label>
-           <select
+          <select
             id="preferenceExchange"
             value={preferenceExchange}
             onChange={(e) => setPreferenceExchange(e.target.value)}
             required
             className="form-control"
-            >
-                <option value='0'> Pay</option>
-                <option value='1'> Work</option>
-                <option value='2'> Both</option>
-                </select>      
+          >
+            <option value="0"> Pay</option>
+            <option value="1"> Work</option>
+            <option value="2"> Both</option>
+          </select>
+        </div>
 
-            </div>
-
-            <div className="form-address">
+        <div className="form-address">
           <label htmlFor="text">Address: </label>
           <input
             type="text"
@@ -179,7 +206,6 @@ const Signup = () => {
             className="form-control"
           />
         </div>
-
 
         <button type="submit" className="btn btn-primary actions">
           Sign Up

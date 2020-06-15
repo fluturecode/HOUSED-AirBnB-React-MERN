@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const Search = (props) => {
-  // const [countries, setCountries] = useState([]);
-  // const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
 
   const handleSearch = (e) => {

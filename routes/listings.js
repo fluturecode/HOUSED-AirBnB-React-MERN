@@ -46,18 +46,18 @@ router.patch('/listings/:id', auth, async (req, res) => {
 });
 
 // Get all listings
-router.get('/listings', auth, async (req, res) => {
+router.get('/listings', async (req, res) => {
   try {
-    await req.user
-      .populate({
-        path: 'listings',
-        options: {
-          limit: parseInt(req.query.limit),
-          skip: parseInt(req.query.skip)
-        }
-      })
-      .execPopulate();
-    res.send(req.user.listings);
+    Listing.find('listings').toArray((res) => console.log(res));
+    // await req.user
+    // populate({
+    //   path: 'listings',
+    //   options: {
+    //     limit: parseInt(req.query.limit),
+    //     skip: parseInt(req.query.skip)
+    //   }
+    // }).execPopulate();
+    // res.send(req.listings);
   } catch (e) {
     res.status(500).send();
   }

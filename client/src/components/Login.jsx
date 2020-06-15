@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
 const Login = () => {
-  const { setUser, setLoggedIn } = useContext;
+  const { setUser, setLoggedIn, user } = useContext(AppContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,12 +11,21 @@ const Login = () => {
     e.preventDefault();
     await axios({
       method: 'POST',
-      url: '/users/login',
+      url: `/users/login`,
       data: {
         email,
         password
       }
-    });
+    })
+      .then(({ data }) => {
+        console.log(data, 'response');
+        setUser(data.user);
+        localStorage.setItem('token', data.token);
+        setLoggedIn(true);
+        setEmail('');
+        setPassword('');
+      })
+      .catch((e) => console.log(e.message.toString(), 'Login error'));
   };
 
   return (

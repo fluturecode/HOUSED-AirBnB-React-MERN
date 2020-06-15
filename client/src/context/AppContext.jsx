@@ -7,7 +7,7 @@ const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const token = localStorage.getItem('toekn');
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (token) {

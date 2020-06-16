@@ -1,0 +1,42 @@
+
+  h2,h3,h4{
+    font-weight:bolder;
+  }
+  
+  .wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-evenly;
+
+  }
+ 
+.list-layout {
+    list-style-type: lower-roman;
+}
+
+  .col-1{
+    flex-grow:1;
+    font-size:0.9em;
+  }
+
+  .col-1 h3{
+    font-size:1.3em;
+    margin-bottom:1em;
+  }
+
+  .col-1 a{
+    display:inline-block;
+    margin-bottom:5px;
+    font-size:0.9em;
+    letter-spacing:0.03em;
+  }
+
+  .text-center{
+    text-align:center;
+  }
+
+  .margin-below-1{
+    margin-bottom:1em;
+  }

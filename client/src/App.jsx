@@ -1,3 +1,4 @@
+  
 import React from 'react';
 import { AppContextProvider } from './context/AppContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -24,3 +25,4 @@ const App = () => {
   );
 };
 export default App;
+

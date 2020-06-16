@@ -1,20 +1,29 @@
+  
 import React from 'react';
 import { AppContextProvider } from './context/AppContext';
-import Login from './components/Login';
-import Footer from './components/Footer'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { Navigation } from './components/Navigation';
 import Signup from './components/Signup';
+import Search from './components/Search';
+import Listings from './components/Listings';
+import Login from './components/Login';
 
 const App = () => {
   return (
     <AppContextProvider>
-      <Navigation />
-      <Login />
-      <Signup />
-      <Footer />
+      <BrowserRouter>
+        <Navigation />
+        <Switch>
+          <Route exact path="/" component={Search} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/listings/:search" component={Listings} />
+        </Switch>
+      </BrowserRouter>
     </AppContextProvider>
   );
 };
 
 export default App;
+

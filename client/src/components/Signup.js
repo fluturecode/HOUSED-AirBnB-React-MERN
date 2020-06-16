@@ -1,66 +1,76 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-import "../styles/signup.css"
+import '../styles/signup.css';
 
-const Signup = () => {
+const Signup = ({ history }) => {
   const { setUser, setLoggedIn } = useContext(AppContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [description, setDescription] = useState('');
-  const [preferenceExchange, setPreferenceExchange] = useState('');
-  const [gender, setGender] = useState('');
-  const [address, setAddress] = useState('');
-  const [passwordShow, setPasswordShow] = useState(false)
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+    birthday: '',
+    phone: '',
+    address: '',
+    firstName: '',
+    lastName: '',
+    preferencesExchange: 'Pay',
+    isHost: false,
+    gender: '',
+    description: ''
+  });
+  const [passwordShow, setPasswordShow] = useState(false);
 
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
 
-
-
-
-  const signUp = async (email, password, firstName, lastName, birthday,description, preferenceExchange, gender, address, e) => {
+  const {
+    email,
+    password,
+    firstName,
+    lastName,
+    birthday,
+    description,
+    preferencesExchange,
+    gender,
+    address,
+    phone,
+    isHost
+  } = state;
+  const handleSignUp = async (e) => {
     e.preventDefault();
     await axios({
       method: 'POST',
-      url: `${process.env.REACT_APP_SERVER_URL}/users`,
+      url: '/register',
       data: {
         email,
         password,
         firstName,
         lastName,
-        birthday,
+        address,
         description,
-        preferenceExchange,
+        isHost,
+        phone,
         gender,
-        address
+        preferencesExchange,
+        birthday
       }
     })
       .then(({ data }) => {
-        console.log(data, 'response');
         setUser(data.user);
         setLoggedIn(true);
-        setEmail('');
-        setPassword('');
-        setFirstName('');
-        setLastName('');
-        setBirthday('');
-        setDescription('');
-        setPreferenceExchange('');
-        setGender('');
-        setAddress('');
+        setState({});
         localStorage.setItem('token', data.token);
+        history.push('/');
       })
-      .catch((e) => console.log(e.message.toString()));
+      .catch((error) => console.log(error.message));
   };
 
   return (
     <div className="sign-up-div">
-      <form onSubmit={(e) => signUp(email, password, firstName, lastName, birthday, description, preferenceExchange, gender, address, e)}>
-      
+      <form onSubmit={handleSignUp}>
         <div className="sign-up-intro">
-            Follow the steps to sign up and find your perfect stay!
+          Follow the steps to sign up and find your perfect stay!
         </div>
         <div className="form-group">
           <label htmlFor="email">Email: </label>
@@ -69,8 +79,8 @@ const Signup = () => {
             name="email"
             id="email"
             placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={state.email}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -81,16 +91,18 @@ const Signup = () => {
             type={passwordShow ? 'text' : 'password'}
             name="password"
             placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={state.password}
+            onChange={handleChange}
             required
             className="form-control"
             id="myInput"
           />
-          <input type="checkbox"  onChange={() => setPasswordShow(!passwordShow)}/>Show Password
-         
+          <input
+            type="checkbox"
+            onChange={() => setPasswordShow(!passwordShow)}
+          />
+          Show Password
         </div>
-
 
         <div className="form-group">
           <label htmlFor="name">First Name: </label>
@@ -99,8 +111,8 @@ const Signup = () => {
             name="firstName"
             id="firstName"
             placeholder="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            value={state.firstName}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -112,39 +124,44 @@ const Signup = () => {
             name="lastName"
             id="lastName"
             placeholder="Last name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-            className="form-control"
-          />
-        </div>
-        
-         <div className="form-group">
-          <label htmlFor="date">Birthday </label>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            placeholder="Birthday"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
+            value={state.lastName}
+            onChange={handleChange}
             required
             className="form-control"
           />
         </div>
 
-     
+        <div className="form-group">
+          <label htmlFor="date">Birthday </label>
+          <input
+            type="date"
+            name="birthday"
+            id="date"
+            placeholder="Birthday"
+            value={state.birthday}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+        </div>
+
         <div className="form-desc">
-          <label htmlFor="name">Tell us a little about yourself. This is so the host can get to know you when you make a reservation.</label>
+          <label htmlFor="name">
+            Tell us a little about yourself. This is so the host can get to know
+            you when you make a reservation.
+          </label>
           <label> We'll help you out with some questions you can answer!</label>
-          <p>Do you have a pet? Are you okay with staying with other guests as well? What type of stay are you looking for? </p>
+          <p>
+            Do you have a pet? Are you okay with staying with other guests as
+            well? What type of stay are you looking for?{' '}
+          </p>
           <textarea
             type="text"
-            name="text"
+            name="description"
             id="description"
             placeholder="Housework, mechanic, etc..."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={state.description}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -152,34 +169,59 @@ const Signup = () => {
 
         <div className="form-group">
           <label htmlFor="name">What would you perfer?</label>
-           <select
+          <select
             id="preferenceExchange"
-            value={preferenceExchange}
-            onChange={(e) => setPreferenceExchange(e.target.value)}
+            name="preferencesExchange"
+            value={state.preferencesExchange}
+            onChange={handleChange}
             required
             className="form-control"
-            >
-                <option value='0'> Pay</option>
-                <option value='1'> Work</option>
-                <option value='2'> Both</option>
-                </select>      
+          >
+            <option value="Pay"> Pay</option>
+            <option value="Work"> Work</option>
+            <option value="Both"> Both</option>
+          </select>
+        </div>
 
-            </div>
-
-            <div className="form-address">
-          <label htmlFor="text">Upload a picture of your state issued ID: </label>
+        <div className="form-address">
+          <label htmlFor="text">Address: </label>
           <input
             type="text"
-            name="image"
+            name="address"
             id="address"
             placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={state.address}
+            onChange={handleChange}
             required
             className="form-control"
           />
         </div>
-
+        <div className="form-gender">
+          <label htmlFor="text">Gender: </label>
+          <input
+            type="text"
+            name="gender"
+            id="address"
+            placeholder="Choose your gender"
+            value={state.gender}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+        </div>
+        <div className="form-phone">
+          <label htmlFor="text">Phone: </label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number"
+            value={state.phone}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+        </div>
 
         <button type="submit" className="btn btn-primary actions">
           Sign Up

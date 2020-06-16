@@ -1,0 +1,35 @@
+.home {
+    border: 1px solid black;
+   text-align: center;
+}
+
+.top-img {
+ border: 1px solid black;
+
+}
+
+
+
+.simple-steps {
+    border: 1px solid black;
+  
+}
+
+.all-steps {
+    border: 1px solid blue;
+    display: flex;
+
+}
+
+.safety-list {
+    border: 1px solid black;
+}
+
+.safety-steps {
+    display: inline;
+    border: 1px solid blue;
+}
+
+.become-host {
+    border: 1px solid black;
+}

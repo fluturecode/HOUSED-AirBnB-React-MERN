@@ -3,83 +3,72 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import '../styles/signup.css';
 
-const Signup = () => {
+const Signup = ({ history }) => {
   const { setUser, setLoggedIn } = useContext(AppContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [description, setDescription] = useState('');
-  const [preferenceExchange, setPreferenceExchange] = useState('');
-  const [gender, setGender] = useState('');
-  const [address, setAddress] = useState('');
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+    birthday: '',
+    phone: '',
+    address: '',
+    firstName: '',
+    lastName: '',
+    preferencesExchange: 'Pay',
+    isHost: false,
+    gender: '',
+    description: ''
+  });
   const [passwordShow, setPasswordShow] = useState(false);
 
-  const signUp = async (
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  const {
     email,
     password,
     firstName,
     lastName,
     birthday,
     description,
-    preferenceExchange,
+    preferencesExchange,
     gender,
     address,
-    e
-  ) => {
+    phone,
+    isHost
+  } = state;
+  const handleSignUp = async (e) => {
     e.preventDefault();
     await axios({
       method: 'POST',
-      url: `/users`,
+      url: '/register',
       data: {
         email,
         password,
         firstName,
         lastName,
-        birthday,
+        address,
         description,
-        preferenceExchange,
+        isHost,
+        phone,
         gender,
-        address
+        preferencesExchange,
+        birthday
       }
     })
       .then(({ data }) => {
-        console.log(data, 'response');
         setUser(data.user);
         setLoggedIn(true);
-        setEmail('');
-        setPassword('');
-        setFirstName('');
-        setLastName('');
-        setBirthday('');
-        setDescription('');
-        setPreferenceExchange('');
-        setGender('');
-        setAddress('');
+        setState({});
         localStorage.setItem('token', data.token);
+        history.push('/');
       })
-      .catch((e) => console.log(e.message.toString()));
+      .catch((error) => console.log(error.message));
   };
 
   return (
     <div className="sign-up-div">
-      <form
-        onSubmit={(e) =>
-          signUp(
-            email,
-            password,
-            firstName,
-            lastName,
-            birthday,
-            description,
-            preferenceExchange,
-            gender,
-            address,
-            e
-          )
-        }
-      >
+      <form onSubmit={handleSignUp}>
         <div className="sign-up-intro">
           Follow the steps to sign up and find your perfect stay!
         </div>
@@ -90,8 +79,8 @@ const Signup = () => {
             name="email"
             id="email"
             placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={state.email}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -102,8 +91,8 @@ const Signup = () => {
             type={passwordShow ? 'text' : 'password'}
             name="password"
             placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={state.password}
+            onChange={handleChange}
             required
             className="form-control"
             id="myInput"
@@ -122,8 +111,8 @@ const Signup = () => {
             name="firstName"
             id="firstName"
             placeholder="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            value={state.firstName}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -135,8 +124,8 @@ const Signup = () => {
             name="lastName"
             id="lastName"
             placeholder="Last name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            value={state.lastName}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -146,11 +135,11 @@ const Signup = () => {
           <label htmlFor="date">Birthday </label>
           <input
             type="date"
-            name="date"
+            name="birthday"
             id="date"
             placeholder="Birthday"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
+            value={state.birthday}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -168,11 +157,11 @@ const Signup = () => {
           </p>
           <textarea
             type="text"
-            name="text"
+            name="description"
             id="description"
             placeholder="Housework, mechanic, etc..."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={state.description}
+            onChange={handleChange}
             required
             className="form-control"
           />
@@ -182,14 +171,15 @@ const Signup = () => {
           <label htmlFor="name">What would you perfer?</label>
           <select
             id="preferenceExchange"
-            value={preferenceExchange}
-            onChange={(e) => setPreferenceExchange(e.target.value)}
+            name="preferencesExchange"
+            value={state.preferencesExchange}
+            onChange={handleChange}
             required
             className="form-control"
           >
-            <option value="0"> Pay</option>
-            <option value="1"> Work</option>
-            <option value="2"> Both</option>
+            <option value="Pay"> Pay</option>
+            <option value="Work"> Work</option>
+            <option value="Both"> Both</option>
           </select>
         </div>
 
@@ -200,8 +190,34 @@ const Signup = () => {
             name="address"
             id="address"
             placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={state.address}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+        </div>
+        <div className="form-gender">
+          <label htmlFor="text">Gender: </label>
+          <input
+            type="text"
+            name="gender"
+            id="address"
+            placeholder="Choose your gender"
+            value={state.gender}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+        </div>
+        <div className="form-phone">
+          <label htmlFor="text">Phone: </label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number"
+            value={state.phone}
+            onChange={handleChange}
             required
             className="form-control"
           />

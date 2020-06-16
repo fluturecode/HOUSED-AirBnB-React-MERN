@@ -18,10 +18,9 @@ const userSchema = new mongoose.Schema(
     },
     // Updated code. Need to check postman if it works.
     birthday: {
-      type: Date,
+      type: String,
       required: true,
-      trim: true,
-      format: Date
+      trim: true
     },
     email: {
       type: String,
@@ -36,7 +35,7 @@ const userSchema = new mongoose.Schema(
       }
     },
     phone: {
-      type: Number,
+      type: String,
       maxlength: 10,
       minlength: 10,
       required: true

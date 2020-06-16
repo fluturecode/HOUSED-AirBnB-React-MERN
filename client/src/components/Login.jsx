@@ -2,34 +2,32 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ history }) => {
   const { setUser, setLoggedIn, user } = useContext(AppContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const logIn = async (email, password, e) => {
+  const logIn = (e) => {
     e.preventDefault();
-    await axios({
-      method: 'POST',
-      url: `/users/login`,
-      data: {
-        email,
-        password
-      }
-    })
+    axios
+      .post('/users/login', { email, password })
       .then(({ data }) => {
-        console.log(data, 'response');
         setUser(data.user);
-        localStorage.setItem('token', data.token);
         setLoggedIn(true);
-        setEmail('');
-        setPassword('');
+        localStorage.setItem('token', data.token);
+        history.push('/');
+        // console.log(data, 'response');
+        // setUser(data.user);
+        // localStorage.setItem('token', data.token);
+        // setLoggedIn(true);
+        // setEmail('');
+        // setPassword('');
       })
       .catch((e) => console.log(e.message.toString(), 'Login error'));
   };
 
   return (
-    <form onSubmit={(e) => logIn(email, password, e)}>
+    <form onSubmit={logIn}>
       <input
         type="email"
         name="email"

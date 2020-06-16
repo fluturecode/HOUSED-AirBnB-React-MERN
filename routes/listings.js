@@ -53,22 +53,13 @@ router.get('/listings', async (req, res) => {
       .then((result) => {
         res.status(200).json(result);
       });
-    // await req.user
-    // populate({
-    //   path: 'listings',
-    //   options: {
-    //     limit: parseInt(req.query.limit),
-    //     skip: parseInt(req.query.skip)
-    //   }
-    // }).execPopulate();
-    // res.send(req.listings);
   } catch (e) {
     res.status(500).json({ message: e });
   }
 });
 
 // Get a specific listing
-router.get('/listings/:id', auth, async (req, res) => {
+router.get('/listings/:id', async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     res.status(400).send('Not a valid listing id');

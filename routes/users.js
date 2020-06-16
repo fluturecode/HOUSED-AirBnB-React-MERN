@@ -13,15 +13,15 @@ const bcrypt = require('bcryptjs');
 // } = require('../emails/account');
 
 // Create a user
-router.post('/users', async (req, res) => {
-  const user = new User(req.body);
+router.post('/register', async (req, res) => {
   try {
+    const user = new User(req.body);
     await user.save();
-    sendWelcomeEmail(user.email, user.name);
+    //sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send(e.message);
   }
 });
 

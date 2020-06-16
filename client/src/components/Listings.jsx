@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const Listings = () => {
+const Listings = ({ match }) => {
   const [listings, setListings] = useState([]);
-  const { search } = useParams();
+  const { search } = match.params;
 
   useEffect(() => {
     axios

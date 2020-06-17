@@ -11,7 +11,7 @@ router.post('/listings', auth, async (req, res) => {
     owner: req.user._id
   });
   try {
-    listing.save();
+    await listing.save();
     res.status(201).send(listing);
   } catch (e) {
     res.status(400).send(e);
@@ -72,6 +72,19 @@ router.get('/listings/:id', async (req, res) => {
     res.send(listing);
   } catch (e) {
     res.status(500).send();
+  }
+});
+
+//Search a listing by City
+
+router.get('/listings/search/:city', async (req, res) => {
+  const city = req.params.city;
+  console.log(city);
+  try {
+    const listings = await Listing.find({ city });
+    res.json(listings);
+  } catch (err) {
+    res.json({ err });
   }
 });
 

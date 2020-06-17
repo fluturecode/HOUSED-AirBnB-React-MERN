@@ -1,4 +1,3 @@
-  
 import React from 'react';
 import { AppContextProvider } from './context/AppContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -15,8 +14,9 @@ const App = () => {
     <AppContextProvider>
       <BrowserRouter>
         <Navigation />
+        <Search />
         <Switch>
-          <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/listings" component={Listings} />
@@ -27,4 +27,3 @@ const App = () => {
   );
 };
 export default App;
-

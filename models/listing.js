@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const listingSchema = new mongoose.Schema(
   {
+    firstName: {
+      type: String,
+      trim: true,
+      required: true
+    },
+
     title: {
       type: String,
       trim: true,
@@ -17,7 +23,25 @@ const listingSchema = new mongoose.Schema(
     address: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
+      lowercase: true
+    },
+
+    city: {
+      type: String,
+      required: true,
+      lowercase: true
+    },
+
+    state: {
+      type: String,
+      required: true,
+      lowercase: true
+    },
+
+    zipCode: {
+      type: String,
+      required: true
     },
 
     images: {

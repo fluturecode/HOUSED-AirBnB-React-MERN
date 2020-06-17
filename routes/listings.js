@@ -60,18 +60,16 @@ router.get('/api/listings', async (req, res) => {
 
 // Get a specific listing
 router.get('/api/listings/:id', async (req, res) => {
-  const _id = req.params.id;
-  if (!mongoose.Types.ObjectId.isValid(_id)) {
-    res.status(400).send('Not a valid listing id');
-  }
+  const id = req.params.id;
+
   try {
-    const listing = await Listing.findOne({ _id, owner: req.user._id });
-    if (!listing) {
-      return res.status(404).send();
-    }
-    res.send(listing);
-  } catch (e) {
-    res.status(500).send();
+    Listing.findById({ _id: id })
+      .exec()
+      .then((result) => {
+        res.status(200).json(result);
+      });
+  } catch (error) {
+    res.status(500).json({ message: e });
   }
 });
 

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import Calendar from './Calendar';
 import { AppContext } from '../context/AppContext';
 import Dropdown from './Dropdown';
+import { useHistory } from 'react-router-dom';
 
 const Search = (props) => {
   const { setSearch, handleSearch } = useContext(AppContext);
@@ -10,6 +11,7 @@ const Search = (props) => {
   const handleChange = ({ target: { name, value } }) => {
     setFormData({ ...formData, [name]: value });
   };
+  const history = useHistory();
 
   const items = [
     {
@@ -81,7 +83,7 @@ const Search = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={(e) => handleSearch(e, history)}>
         <input
           type="text"
           className="input"

@@ -1,10 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Calendar from './Calendar';
 import { AppContext } from '../context/AppContext';
 import Dropdown from './Dropdown';
 
 const Search = (props) => {
   const { setSearch, handleSearch } = useContext(AppContext);
+  const [formData, setFormData] = useState({ month: '' });
+
+  const handleChange = ({ target: { name, value } }) => {
+    setFormData({ ...formData, [name]: value });
+  };
+
   const items = [
     {
       id: 1,
@@ -60,6 +66,19 @@ const Search = (props) => {
     }
   ];
 
+  const months = [];
+  items !== null &&
+    items.forEach((item) => {
+      months.push(item.value);
+    });
+  const filteredMonth = months.map((month, i) => {
+    return (
+      <option key={i} value={month}>
+        {month}
+      </option>
+    );
+  });
+
   return (
     <div>
       <form onSubmit={handleSearch}>
@@ -70,7 +89,10 @@ const Search = (props) => {
           onChange={(e) => setSearch(e.target.value)}
         />
         <div className="container"></div>
-        <input type="date" placeholder="Start Date" />
+        <select className="github-filter" onChange={handleChange}>
+          <option>Choose Month</option>
+          {filteredMonth}
+        </select>
         <input type="date" placeholder="End Date" />
         <button>Search</button>
       </form>

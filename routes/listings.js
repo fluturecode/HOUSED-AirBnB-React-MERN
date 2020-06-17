@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 const Listing = require('../models/listing');
 
 // Create a listing
-router.post('/listings', auth, async (req, res) => {
+router.post('/api/listings', auth, async (req, res) => {
   const listing = new Listing({
     ...req.body,
     owner: req.user._id
@@ -19,7 +19,7 @@ router.post('/listings', auth, async (req, res) => {
 });
 
 // Update a listing
-router.patch('/listings/:id', auth, async (req, res) => {
+router.patch('/api/listings/:id', auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['title', 'description', 'address', 'images', 'price'];
   const isValidOperation = updates.every((update) =>
@@ -46,7 +46,7 @@ router.patch('/listings/:id', auth, async (req, res) => {
 });
 
 // Get all listings
-router.get('/listings', async (req, res) => {
+router.get('/api/listings', async (req, res) => {
   try {
     Listing.find()
       .exec()
@@ -59,7 +59,7 @@ router.get('/listings', async (req, res) => {
 });
 
 // Get a specific listing
-router.get('/listings/:id', async (req, res) => {
+router.get('/api/listings/:id', async (req, res) => {
   const _id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     res.status(400).send('Not a valid listing id');
@@ -75,9 +75,10 @@ router.get('/listings/:id', async (req, res) => {
   }
 });
 
-//Search a listing by City
+//Search listings by City
 
-router.get('/listings/search/:city', async (req, res) => {
+router.get('/api/listings/search/:city', async (req, res) => {
+  console.log('hi!');
   const city = req.params.city;
   console.log(city);
   try {
@@ -89,7 +90,7 @@ router.get('/listings/search/:city', async (req, res) => {
 });
 
 // Delete a listing
-router.delete('/listings/:id', auth, async (req, res) => {
+router.delete('/api/listings/:id', auth, async (req, res) => {
   try {
     const listing = await Listing.findOneAndDelete({
       _id: req.params.id,

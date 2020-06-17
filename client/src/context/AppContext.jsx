@@ -9,10 +9,29 @@ const AppContextProvider = ({ children }) => {
 
   const token = localStorage.getItem('token');
 
+  const [search, setSearch] = useState([]);
+  const [listings, setListings] = useState([]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // props.history.push(`/listings/${search}`);
+    fetch(`/listings/search/${search}`)
+      .then((data) => {
+        return data.json();
+      })
+      .then((res) => {
+        console.log(res);
+        setListings(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     if (token) {
       axios
-        .get('/users/me', { headers: { Authorizatoin: `Bearer ${token}` } })
+        .get('/users/me', { headers: { Authorization: `Bearer ${token}` } })
         .then(({ data }) => {
           console.log(data);
           setUser(data);
@@ -23,7 +42,18 @@ const AppContextProvider = ({ children }) => {
   }, [token]);
 
   return (
-    <AppContext.Provider value={{ user, setUser, loggedIn, setLoggedIn }}>
+    <AppContext.Provider
+      value={{
+        user,
+        setUser,
+        loggedIn,
+        setLoggedIn,
+        search,
+        setSearch,
+        handleSearch,
+        listings
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

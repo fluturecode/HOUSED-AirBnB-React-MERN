@@ -10,18 +10,20 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Search from './components/Search';
 import HowItWorks from './components/HowItWorks';
+import Search from './components/Search';
 
 const App = () => {
   return (
     <AppContextProvider>
       <BrowserRouter>
         <Navigation />
+        <Search />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/howitworks" component={HowItWorks} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/listings" component={Listings} />
+          <Route path="/listings" component={Listings} />
         </Switch>
         <Footer />
       </BrowserRouter>

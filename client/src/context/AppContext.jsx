@@ -14,8 +14,7 @@ const AppContextProvider = ({ children }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // props.history.push(`/listings/${search}`);
-    fetch(`/listings/search/${search}`)
+    fetch(`/api/listings/search/${search}`)
       .then((data) => {
         return data.json();
       })

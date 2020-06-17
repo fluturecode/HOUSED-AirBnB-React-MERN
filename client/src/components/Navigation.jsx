@@ -26,7 +26,7 @@ export const Navigation = () => {
           </Link>
         ) : (
           <>
-            <Link to="/faq"> How it works</Link>
+            <Link to="/howitworks"> How it works</Link>
             <Link to="/signup"> Sign Up</Link>
             <Link to="/login"> Sign In</Link>
           </>

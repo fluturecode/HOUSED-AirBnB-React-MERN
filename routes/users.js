@@ -3,21 +3,14 @@ const router = new express.Router();
 const User = require('../models/user');
 const auth = require('../middleware/auth.js');
 const bcrypt = require('bcryptjs');
-// const sgMail = require('@sendgrid/mail');
-// const dotenv = require('dotenv');
-// const sharp = require('sharp');
-// const {
-//   sendWelcomeEmail,
-//   sendCancellationEmail
-//   //  forgotPasswordEmail
-// } = require('../emails/account');
+const { sendWelcomeEmail } = require('../emails/account');
 
 // Create a user
 router.post('/register', async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
-    //sendWelcomeEmail(user.email, user.name);
+    sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (e) {
@@ -118,18 +111,6 @@ router.post('/users/logout', auth, async (req, res) => {
     res.status(500).send();
   }
 });
-
-// * May not implement this code.
-// Logout all devices
-// router.post('/users/logoutAll', auth, async (req, res) => {
-//   try {
-//     req.user.tokens = [];
-//     await req.user.save();
-//     res.send({ message: 'You have been logged out of all devices!' });
-//   } catch (e) {
-//     res.status(500).send();
-//   }
-// });
 
 // // Reset Password Email Request
 // router.get('/users/password/forgot', async (req, res) => {

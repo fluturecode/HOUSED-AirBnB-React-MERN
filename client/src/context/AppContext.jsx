@@ -12,8 +12,9 @@ const AppContextProvider = ({ children }) => {
   const [search, setSearch] = useState([]);
   const [listings, setListings] = useState([]);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e, history) => {
     e.preventDefault();
+    history.push('/listings');
     fetch(`/api/listings/search/${search}`)
       .then((data) => {
         return data.json();

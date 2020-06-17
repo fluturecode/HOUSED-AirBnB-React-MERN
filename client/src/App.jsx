@@ -8,7 +8,6 @@ import Listings from './components/Listings';
 import Login from './components/Login';
 import Home from './components/Home';
 import Footer from './components/Footer';
-import Search from './components/Search';
 import HowItWorks from './components/HowItWorks';
 import Search from './components/Search';
 

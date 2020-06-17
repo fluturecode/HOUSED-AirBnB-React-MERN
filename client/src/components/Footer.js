@@ -4,31 +4,31 @@ import '../styles/footer.css';
 export const Footer = () => {
     return (
         
-  <div class='wrapper'>
+  <div className='wrapper'>
 
       
-      <div class='col-1'>
+      <div className='col-1'>
         <h3>Community</h3>
-        <ul class="list-layout">
-          <li class="link-contrast">About</li>
-          <li class="link-contrast">Photo Gallery</li>
+        <ul className="list-layout">
+          <li className="link-contrast">About</li>
+          <li className="link-contrast">Photo Gallery</li>
         </ul>
       </div>
 
-      <div class='col-1'>
+      <div className='col-1'>
         <h3>Safety</h3>
-        <ul class="list-layout">
-          <li class="link-contrast">Trust &amp; Basics</li>
-          <li class="link-contrast">Tips</li>
+        <ul className="list-layout">
+          <li className="link-contrast">Trust &amp; Basics</li>
+          <li className="link-contrast">Tips</li>
         </ul>
       </div>
 
-      <div class='col-1'>
+      <div className='col-1'>
         <h3>Help and Support</h3>
-        <ul class="list-layout">
-          <li class="link-contrast">Contact Us</li>
-          <li class="link-contrast">Cancellation</li>
-          <li class="link-contrast">Terms and Policies</li>
+        <ul className="list-layout">
+          <li className="link-contrast">Contact Us</li>
+          <li className="link-contrast">Cancellation</li>
+          <li className="link-contrast">Terms and Policies</li>
         </ul>
       </div>
     </div>

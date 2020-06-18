@@ -10,14 +10,13 @@ const bookingRouter = require('./routes/bookings');
 
 const app = express();
 app.use(cors());
-
 app.use(express.json());
 
 // Call routes
 app.use(userRouter);
 app.use(listingRouter);
 app.use(bookingRouter);
-//
+
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));

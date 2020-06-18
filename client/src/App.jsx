@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import HowItWorks from './components/HowItWorks';
 import Search from './components/Search';
 import ListingDetails from './components/ListingDetails';
+import Confirmation from './components/Confirmation';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/listings" component={Listings} />
+          <Route exact path="/confirmation" component={Confirmation} />
           <Route path="/listings/search/:city" component={Listings} />
           <Route exact path="/listings/:id" component={ListingDetails} />
         </Switch>

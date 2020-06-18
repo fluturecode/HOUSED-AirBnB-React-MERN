@@ -30,9 +30,7 @@
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
     "lodash": "^4.17.15",
-    "mongodb": "^3.5.9",
-    "nodemon": "^2.0.4",
-    "prettier": "^2.0.5"
+    "mongodb": "^3.5.9"
   },
   "scripts": {
     "start": "node server.js",

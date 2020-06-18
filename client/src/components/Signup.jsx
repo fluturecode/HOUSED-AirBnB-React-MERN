@@ -15,7 +15,7 @@ const Signup = ({ history }) => {
     firstName: '',
     lastName: '',
     preferencesExchange: 'Pay',
-    isHost: false,
+    isHost: '',
     gender: '',
     description: ''
   });
@@ -242,9 +242,9 @@ const Signup = ({ history }) => {
           required
           className="form-control"
         >
-             <option value="0"> Choose One:</option>
-            <option value="1"> A place to stay</option>
-            <option value="2"> To share my space</option>
+             <option value=""> Choose One:</option>
+            <option value="false"> A place to stay</option>
+            <option value="true"> To share my space</option>
             
 
         </select>

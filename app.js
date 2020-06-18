@@ -1,7 +1,7 @@
 require('./db/mongoose');
 
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 
 // import routes
 const userRouter = require('./routes/users');
@@ -9,10 +9,11 @@ const listingRouter = require('./routes/listings');
 const bookingRouter = require('./routes/bookings');
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 
 app.use(express.json());
 
+app.get('/foo', (_, res) => res.send({ ping: 'poing' }));
 // Call routes
 app.use(userRouter);
 app.use(listingRouter);

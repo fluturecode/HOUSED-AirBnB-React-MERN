@@ -11,6 +11,7 @@ const AppContextProvider = ({ children }) => {
 
   const [search, setSearch] = useState([]);
   const [listings, setListings] = useState([]);
+  const [booking, setBooking] = useState(null);
 
   const handleSearch = (e, history) => {
     e.preventDefault();
@@ -51,7 +52,9 @@ const AppContextProvider = ({ children }) => {
         search,
         setSearch,
         handleSearch,
-        listings
+        listings,
+        booking,
+        setBooking
       }}
     >
       {children}

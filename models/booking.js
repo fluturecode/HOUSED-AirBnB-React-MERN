@@ -2,25 +2,16 @@ const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema(
   {
-    title: {
+    status: {
       type: String,
-      trim: true,
-      required: true
-    },
-
-    address: {
-      type: String,
-      required: true
+      enum: ['INFO_REQUESTED', 'REQUESTED', 'CONFIRMED'],
+      required: true,
+      default: 'INFO_REQUESTED'
     },
 
     listing_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Listings'
-    },
-
-    price: {
-      type: Number,
-      required: true
     },
 
     guest: {

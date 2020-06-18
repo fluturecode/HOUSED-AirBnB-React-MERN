@@ -208,10 +208,10 @@ const Signup = ({ history }) => {
           required
           className="form-control"
         >
-            <option value="0"> Select Gender:</option>
-            <option value="1"> Male</option>
-            <option value="2"> Female</option>
-            <option value="3"> Other</option>
+            <option value=""> Select Gender:</option>
+            <option value="Male"> Male</option>
+            <option value="Female"> Female</option>
+            <option value="Other"> Other</option>
 
         </select>
       </div>

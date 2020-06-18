@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import '../styles/signup.css';
+import FileUpload from './FileUpload'
 
 const Signup = ({ history }) => {
   const { setUser, setLoggedIn } = useContext(AppContext);
@@ -228,19 +229,6 @@ const Signup = ({ history }) => {
         />
       </div>
 
-      <div className="form-group">
-        <label htmlFor="text"> Upload License Picture: </label>
-        <input
-          type="file"
-          name="img"
-          id="img"
-          accept="image/*"
-          value={state.license}
-          onChange={handleChange}
-          required
-          className="form-control"
-        />
-      </div>
 
 
       <div className="form-group">
@@ -262,11 +250,16 @@ const Signup = ({ history }) => {
         </select>
       </div>
 
+      <FileUpload />
+
       <button type="submit" className="btn btn-primary actions">
         Sign Up
       </button>
     </form>
+
   </div>
+
+
   );
 };
 

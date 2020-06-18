@@ -8,9 +8,8 @@ export default () => {
 
   return (
     <h2>
-      {' '}
-      Thanks for requesting more information your booking -{' '}
-      {booking.listing_id.title}{' '}
+      Thanks for requesting more information on your booking
+      {booking.listing_id.title}.
     </h2>
   );
 };

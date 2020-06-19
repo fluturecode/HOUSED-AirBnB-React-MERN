@@ -11,7 +11,6 @@ import Footer from './components/Footer';
 import HowItWorks from './components/HowItWorks';
 import ListingDetails from './components/ListingDetails';
 import Confirmation from './components/Confirmation';
-import Logout from './components/Logout'
 
 const App = () => {
   return (

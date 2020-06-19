@@ -14,13 +14,11 @@ const Home = () => {
       <Listings />
       <div className="simple-steps">
         <h2> It's just 4 simple steps!</h2>
-
         <div className="all-steps">
           <h1> Step 1</h1>
           <h3> Become part of the family</h3>
           <p> We'll need some basic information</p>
         </div>
-
         <div className="all-steps">
           {' '}
           <h1> Step 3</h1>

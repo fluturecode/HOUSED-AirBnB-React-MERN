@@ -21,7 +21,6 @@ const ListingDetails = () => {
         }
       }
     );
-
     if (data) {
       setBooking(data);
       history.push('/confirmation');
@@ -37,7 +36,6 @@ const ListingDetails = () => {
   return (
     <div>
       <h1>{listing.title}</h1>
-
       <button onClick={handleConfirm}>Confirm</button>
     </div>
   );

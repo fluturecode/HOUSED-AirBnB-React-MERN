@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import Calendar from './Calendar';
+// import Calendar from './Calendar';
 import { AppContext } from '../context/AppContext';
-import Dropdown from './Dropdown';
+// import Dropdown from './Dropdown';
 import { useHistory } from 'react-router-dom';
 
 const Search = (props) => {

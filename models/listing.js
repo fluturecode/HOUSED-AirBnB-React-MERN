@@ -49,6 +49,10 @@ const listingSchema = new mongoose.Schema(
       required: true
     },
 
+    //   secondaryImages: [{
+    //     type: String,
+    // }],
+
     price: {
       type: String,
       required: true

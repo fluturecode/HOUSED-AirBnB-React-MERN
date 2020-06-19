@@ -10,7 +10,7 @@ const {
 } = require('../emails/account');
 
 // Create a user
-router.post('/register', async (req, res) => {
+router.post('/api/register', async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
@@ -22,11 +22,11 @@ router.post('/register', async (req, res) => {
   }
 });
 // Get current user
-router.get('/users/me', auth, async (req, res) => {
+router.get('/api/users/me', auth, async (req, res) => {
   res.send(req.user);
 });
 // Update a User
-router.patch('/users/me', auth, async (req, res) => {
+router.patch('/api/users/me', auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
     'firstName',
@@ -53,7 +53,7 @@ router.patch('/users/me', auth, async (req, res) => {
   }
 });
 // Delete a user
-router.delete('/users/me', auth, async (req, res) => {
+router.delete('/api/users/me', auth, async (req, res) => {
   try {
     await req.user.remove();
     sendCancellationEmail(req.user.email, req.user.name);
@@ -63,7 +63,7 @@ router.delete('/users/me', auth, async (req, res) => {
   }
 });
 // Login a user
-router.post('/users/login', async (req, res) => {
+router.post('/api/users/login', async (req, res) => {
   console.log(req.body);
   try {
     const user = await User.findByCredentials(
@@ -78,7 +78,7 @@ router.post('/users/login', async (req, res) => {
   }
 });
 // Logout a user
-router.post('/users/logout', auth, async (req, res) => {
+router.post('/api/users/logout', auth, async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter(token => {
       return token.token !== req.token;
@@ -102,7 +102,7 @@ router.get('/users/password/forgot', async (req, res) => {
   }
 });
 // Reset Password
-router.get('/users/password/reset', async (req, res) => {
+router.get('/api/users/password/reset', async (req, res) => {
   let newPassword = await bcrypt.hash(req.query.password, 8);
   const update = { password: newPassword };
   const filter = { email: req.query.email };

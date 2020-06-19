@@ -3,6 +3,7 @@ import '../styles/nav.css';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import Logout from './Logout';
+import logo from '../images/housed.png'
 
 export const Navigation = () => {
   const { user, loggedIn, setLoggedIn } = useContext(AppContext);
@@ -16,14 +17,27 @@ export const Navigation = () => {
   }, []);
   console.log(loggedIn);
   console.log(user);
+
+
+
   return (
     <div className="navbar">
-      <Link to="/">Housed</Link>
+
+
+
+      <Link to="/">
+        <div className="logo">
+          <img src={logo} alt="Housed logo" />
+        </div>
+      </Link>
       <div className="nav-right">
         {loggedIn ? (
-          <Link to="/users/logout">
+          
             <Logout />
-          </Link>
+          
+           
+          
+   
         ) : (
           <>
             <Link to="/howitworks"> How it works</Link>

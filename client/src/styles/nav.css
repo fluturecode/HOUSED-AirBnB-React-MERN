@@ -1,12 +1,15 @@
+
+
 .navbar {
     overflow: hidden;
-    background-color: whitesmoke;
-    
+   background-color: #FFA500;
+   
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .navbar a{
   
     float: left;
-    color: black;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -14,8 +17,8 @@
 }
 
 .navbar a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: lightcoral;
+    color: white;
 }
 .navbar a.active {
     background-color: #4CAF50;
@@ -23,8 +26,42 @@
 }
 
 .nav-right {
-    border: 1px solid black; 
     float: right;
-  
+}
+
+.nav-login {
+    display: flex;
+ justify-content: space-evenly;
+    width: 550px;
+    height: 52px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    line-height: 32px;
+    text-align: right;
     
 }
+
+.nav-login button {
+    color: white;
+    font-weight: 600;
+}
+
+.nav-name {
+    /* background-color: lightseagreen; */
+  margin-top: 15px;
+  color: white;
+  font-size: 17px;
+}
+
+
+
+button:hover {
+    background: lightcoral;
+}
+
+button:active {
+    background: lightsalmon;
+}
+

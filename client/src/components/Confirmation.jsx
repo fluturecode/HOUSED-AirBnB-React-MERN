@@ -18,7 +18,7 @@ export default () => {
     
       <p>Thanks for requesting more information on your booking:</p> 
       <h4 className="header">{booking.listing_id.title}. </h4>
-      <img src={booking.listing_id.images} alt="listing" />
+      <img src={booking.listing_id.primaryImage} alt="listing" />
 
 
       <h4 className="header"> What To Expect:</h4>

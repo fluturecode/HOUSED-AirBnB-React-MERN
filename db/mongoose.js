@@ -1,15 +1,14 @@
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
-const User = require('../models/user');
 
 const mongoose = require('mongoose');
-// const User = require('../models/user');
-
-mongoose.connect(process.env.MONGODB_URL, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true
-});
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log('MongoDB database connection established successfully');
-});
+try {
+  mongoose.connect(`mongodb://127.0.0.1:27017/final`, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  });
+  console.log('Connected to MongoDB');
+} catch (e) {
+  console.log(e.toString());
+}

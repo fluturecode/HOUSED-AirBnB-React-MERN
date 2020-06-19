@@ -21,7 +21,7 @@ export const Navigation = () => {
       <Link to="/">Housed</Link>
       <div className="nav-right">
         {loggedIn ? (
-          <Link to="/login">
+          <Link to="/users/logout">
             <Logout />
           </Link>
         ) : (

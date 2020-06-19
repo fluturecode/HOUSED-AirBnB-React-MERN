@@ -9,9 +9,9 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import HowItWorks from './components/HowItWorks';
-import Search from './components/Search';
 import ListingDetails from './components/ListingDetails';
 import Confirmation from './components/Confirmation';
+import Logout from './components/Logout'
 
 const App = () => {
   return (
@@ -21,8 +21,9 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/howitworks" component={HowItWorks} />
-          <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/users/logout" component={Home} />
           <Route exact path="/listings" component={Listings} />
           <Route exact path="/confirmation" component={Confirmation} />
           <Route path="/listings/search/:city" component={Listings} />

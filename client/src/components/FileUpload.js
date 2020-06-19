@@ -25,7 +25,7 @@ const FileUpload = () => {
             <div className="custom-file mb-2">
 
                     <input type="file" name="file"  onChange={uploadImage} />
-                    { loading ? <h6> Loading...</h6> : <img className="settings-image" src={image} />}
+                   
             </div>
         </>
     )

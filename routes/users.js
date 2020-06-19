@@ -3,26 +3,28 @@ const router = new express.Router();
 const User = require('../models/user');
 const auth = require('../middleware/auth.js');
 const bcrypt = require('bcryptjs');
-const { sendWelcomeEmail } = require('../emails/account');
+const {
+  sendWelcomeEmail,
+  sendCancellationEmail,
+  forgotPasswordEmail
+} = require('../emails/account');
 
 // Create a user
 router.post('/api/register', async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
-    sendWelcomeEmail(user.email, user.name);
+    sendWelcomeEmail(user.email, user.firstName);
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (e) {
     res.status(400).send(e.message);
   }
 });
-
 // Get current user
 router.get('/api/users/me', auth, async (req, res) => {
   res.send(req.user);
 });
-
 // Update a User
 router.patch('/api/users/me', auth, async (req, res) => {
   const updates = Object.keys(req.body);
@@ -50,7 +52,6 @@ router.patch('/api/users/me', auth, async (req, res) => {
     res.status(400).send(e);
   }
 });
-
 // Delete a user
 router.delete('/api/users/me', auth, async (req, res) => {
   try {
@@ -61,28 +62,6 @@ router.delete('/api/users/me', auth, async (req, res) => {
     res.status(500).send();
   }
 });
-
-// Serve a user's avatar
-router.get('/api/users/:id/avatar', async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    if (!user || !user.avatar) {
-      throw new Error();
-    }
-    res.set('Content-Type', 'image/png');
-    res.send(user.avatar);
-  } catch (e) {
-    res.status(404).send();
-  }
-});
-
-// Delete a user's avatar
-router.delete('/api/users/me/avatar/delete', auth, async (req, res) => {
-  req.user.avatar = undefined;
-  await req.user.save();
-  res.send({ message: 'You have deleted your avatar.' });
-});
-
 // Login a user
 router.post('/api/users/login', async (req, res) => {
   console.log(req.body);
@@ -98,7 +77,6 @@ router.post('/api/users/login', async (req, res) => {
     console.log(e);
   }
 });
-
 // Logout a user
 router.post('/api/users/logout', auth, async (req, res) => {
   try {
@@ -111,34 +89,26 @@ router.post('/api/users/logout', auth, async (req, res) => {
     res.status(500).send();
   }
 });
-
-// // Reset Password Email Request
-// router.get('/users/password/forgot', async (req, res) => {
-//   try {
-//     const user = await User.findOne({
-//       email: req.body.email
-//     });
-//     forgotPasswordEmail = {
-//       email: user.email,
-//       token: user.tokens[0].token,
-//       password: user.password
-//     };
-//     res.send(forgotPasswordEmail);
-//   } catch (e) {
-//     res.status(400).send(e.toString());
-//   }
-// });
-
+// Reset Password Email Request
+router.get('/users/password/forgot', async (req, res) => {
+  try {
+    const user = await User.findOne({
+      email: req.body.email
+    });
+    forgotPasswordEmail(user.email, user.tokens[0].token, req.query.password);
+    res.status(200).send();
+  } catch (e) {
+    res.status(400).send(e.toString());
+  }
+});
 // Reset Password
 router.get('/api/users/password/reset', async (req, res) => {
   let newPassword = await bcrypt.hash(req.query.password, 8);
   const update = { password: newPassword };
   const filter = { email: req.query.email };
-
   const user = await User.findOne({
     email: req.query.email
   });
-
   try {
     if (user.tokens[0].token !== req.query.token) {
       throw new Error();
@@ -149,5 +119,4 @@ router.get('/api/users/password/reset', async (req, res) => {
     res.status(400).send(e.toString());
   }
 });
-
 module.exports = router;

@@ -15,7 +15,7 @@ const Signup = ({ history }) => {
     firstName: '',
     lastName: '',
     preferencesExchange: 'Pay',
-    isHost: false,
+    isHost: '',
     gender: '',
     description: ''
   });
@@ -184,74 +184,78 @@ const Signup = ({ history }) => {
           </select>
         </div>
 
-        <div className="form-address">
-          <label htmlFor="text">Address: </label>
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
-            value={state.address}
-            onChange={handleChange}
-            required
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="select">Gender: </label>
-          <select
-            type="select"
-            name="gender"
-            id="gender"
-            value={state.gender}
-            onChange={handleChange}
-            required
-            className="form-control"
-          >
-            <option value="0"> Select Gender:</option>
-            <option value="1"> Male</option>
-            <option value="2"> Female</option>
-            <option value="3"> Other</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="text">Phone: </label>
-          <input
-            type="text"
-            name="phone"
-            id="phone"
-            placeholder="Phone Number"
-            value={state.phone}
-            onChange={handleChange}
-            required
-            className="form-control"
-          />
-        </div>
+      <div className="form-address">
+        <label htmlFor="text">Address: </label>
+        <input
+          type="text"
+          name="address"
+          id="address"
+          placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
+          value={state.address}
+          onChange={handleChange}
+          required
+          className="form-control"
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="select">Gender: </label>
+        <select
+          type="select"
+          name="gender"
+          id="gender"
+          value={state.gender}
+          onChange={handleChange}
+          required
+          className="form-control"
+        >
+            <option value=""> Select Gender:</option>
+            <option value="Male"> Male</option>
+            <option value="Female"> Female</option>
+            <option value="Other"> Other</option>
 
-        <div className="form-group">
-          <label htmlFor="select">Lastly, what are you looking for? </label>
-          <select
-            type="select"
-            name="isHost"
-            id="isHost"
-            value={state.isHost}
-            onChange={handleChange}
-            required
-            className="form-control"
-          >
-            <option value="0"> Choose One:</option>
-            <option value="1"> A place to stay</option>
-            <option value="2"> To share my space</option>
-          </select>
-        </div>
+        </select>
+      </div>
+      <div className="form-group">
+        <label htmlFor="text">Phone: </label>
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          placeholder="Phone Number"
+          value={state.phone}
+          onChange={handleChange}
+          required
+          className="form-control"
+        />
+      </div>
+        
+      <div className="form-group">
+        <label htmlFor="select">Lastly, what are you looking for? </label>
+        <select
+          type="select"
+          name="isHost"
+          id="isHost"
+          value={state.isHost}
+          onChange={handleChange}
+          required
+          className="form-control"
+        >
+            <option value=""> Choose One:</option>
+            <option value="false"> A place to stay</option>
+            <option value="true"> To share my space</option>
+        </select>
+      </div>
 
-        <FileUpload />
+      <FileUpload />
 
-        <button type="submit" className="btn btn-primary actions">
-          Sign Up
-        </button>
-      </form>
-    </div>
+      <button type="submit" className="btn btn-primary actions">
+        Sign Up
+      </button>
+    </form>
+
+  </div>
+
+
   );
 };
 

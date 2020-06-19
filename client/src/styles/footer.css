@@ -4,26 +4,30 @@
   }
   
   .wrapper {
-    max-width: 1024px;
+    max-width: 100%;
     margin: 0 auto;
-    background-color: whitesmoke;
-    display: flex;
+   background-color: lightgray;
+     display: flex;
     justify-content: space-evenly;
+    padding-top: 25px;
 
   }
  
 .list-layout {
-    list-style-type: lower-roman;
+    list-style-type: disc;
 }
 
   .col-1{
     flex-grow:1;
-    font-size:0.9em;
+    font-size:0.8em;
+ 
+    
   }
 
   .col-1 h3{
-    font-size:1.3em;
+    font-size:1.1em;
     margin-bottom:1em;
+    text-decoration: underline;
   }
 
   .col-1 a{
@@ -40,3 +44,4 @@
   .margin-below-1{
     margin-bottom:1em;
   }
+

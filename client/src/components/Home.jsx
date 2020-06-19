@@ -11,7 +11,8 @@ const Home = () => {
         <img src={require('../images/hero1.png')} alt="Man on beach" />
         <p> this is a test</p>
       </div>
-      <Listings />
+      <Search />
+      {/* <Listings /> */}
       <div className="simple-steps">
         <h2> It's just 4 simple steps!</h2>
 

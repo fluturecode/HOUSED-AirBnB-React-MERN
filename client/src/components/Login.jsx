@@ -7,10 +7,10 @@ const Login = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const logIn = (e) => {
+  const logIn = e => {
     e.preventDefault();
     axios
-      .post('/users/login', { email, password })
+      .post('/api/users/login', { email, password })
       .then(({ data }) => {
         setUser(data.user);
         setLoggedIn(true);
@@ -23,7 +23,7 @@ const Login = ({ history }) => {
         // setEmail('');
         // setPassword('');
       })
-      .catch((e) => console.log(e.message.toString(), 'Login error'));
+      .catch(e => console.log(e.message.toString(), 'Login error'));
   };
 
   return (
@@ -33,7 +33,7 @@ const Login = ({ history }) => {
         name="email"
         placeholder="Enter email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
         required
       />
       <input
@@ -41,7 +41,7 @@ const Login = ({ history }) => {
         name="password"
         placeholder="Enter password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
         required
       />
       <button type="submit" className="btn btn-primary">

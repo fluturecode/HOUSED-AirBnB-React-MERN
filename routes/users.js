@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const { sendWelcomeEmail } = require('../emails/account');
 
 // Create a user
-router.post('/register', async (req, res) => {
+router.post('/api/register', async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
@@ -19,12 +19,12 @@ router.post('/register', async (req, res) => {
 });
 
 // Get current user
-router.get('/users/me', auth, async (req, res) => {
+router.get('/api/users/me', auth, async (req, res) => {
   res.send(req.user);
 });
 
 // Update a User
-router.patch('/users/me', auth, async (req, res) => {
+router.patch('/api/users/me', auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
     'firstName',
@@ -36,14 +36,14 @@ router.patch('/users/me', auth, async (req, res) => {
     'description',
     'preferencesExchange'
   ];
-  const isValidOperation = updates.every((update) =>
+  const isValidOperation = updates.every(update =>
     allowedUpdates.includes(update)
   );
   if (!isValidOperation) {
     return res.status(400).send({ error: 'Invalid updates!' });
   }
   try {
-    updates.forEach((update) => (req.user[update] = req.body[update]));
+    updates.forEach(update => (req.user[update] = req.body[update]));
     await req.user.save();
     res.send(req.user);
   } catch (e) {
@@ -52,7 +52,7 @@ router.patch('/users/me', auth, async (req, res) => {
 });
 
 // Delete a user
-router.delete('/users/me', auth, async (req, res) => {
+router.delete('/api/users/me', auth, async (req, res) => {
   try {
     await req.user.remove();
     sendCancellationEmail(req.user.email, req.user.name);
@@ -63,7 +63,7 @@ router.delete('/users/me', auth, async (req, res) => {
 });
 
 // Serve a user's avatar
-router.get('/users/:id/avatar', async (req, res) => {
+router.get('/api/users/:id/avatar', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user || !user.avatar) {
@@ -77,14 +77,14 @@ router.get('/users/:id/avatar', async (req, res) => {
 });
 
 // Delete a user's avatar
-router.delete('/users/me/avatar/delete', auth, async (req, res) => {
+router.delete('/api/users/me/avatar/delete', auth, async (req, res) => {
   req.user.avatar = undefined;
   await req.user.save();
   res.send({ message: 'You have deleted your avatar.' });
 });
 
 // Login a user
-router.post('/users/login', async (req, res) => {
+router.post('/api/users/login', async (req, res) => {
   console.log(req.body);
   try {
     const user = await User.findByCredentials(
@@ -100,9 +100,9 @@ router.post('/users/login', async (req, res) => {
 });
 
 // Logout a user
-router.post('/users/logout', auth, async (req, res) => {
+router.post('/api/users/logout', auth, async (req, res) => {
   try {
-    req.user.tokens = req.user.tokens.filter((token) => {
+    req.user.tokens = req.user.tokens.filter(token => {
       return token.token !== req.token;
     });
     await req.user.save();
@@ -130,7 +130,7 @@ router.post('/users/logout', auth, async (req, res) => {
 // });
 
 // Reset Password
-router.get('/users/password/reset', async (req, res) => {
+router.get('/api/users/password/reset', async (req, res) => {
   let newPassword = await bcrypt.hash(req.query.password, 8);
   const update = { password: newPassword };
   const filter = { email: req.query.email };

@@ -13,7 +13,7 @@ const Logout = () => {
     const token = localStorage.getItem('token');
     await axios({
       method: 'POST',
-      url: `/users/logout`,
+      url: `/api/users/logout`,
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(({ data }) => {
@@ -23,7 +23,7 @@ const Logout = () => {
         setLoggedIn(false);
         history.push('/')
       })
-      .catch((e) => console.log(e.message.toString()));
+      .catch(e => console.log(e.message.toString()));
   };
   return (
     <div>

@@ -21,7 +21,7 @@ const Signup = ({ history }) => {
   });
   const [passwordShow, setPasswordShow] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
@@ -38,11 +38,11 @@ const Signup = ({ history }) => {
     phone,
     isHost
   } = state;
-  const handleSignUp = async (e) => {
+  const handleSignUp = async e => {
     e.preventDefault();
     await axios({
       method: 'POST',
-      url: '/register',
+      url: '/api/register',
       data: {
         email,
         password,
@@ -64,7 +64,7 @@ const Signup = ({ history }) => {
         localStorage.setItem('token', data.token);
         history.push('/');
       })
-      .catch((error) => console.log(error.message));
+      .catch(error => console.log(error.message));
   };
 
   return (
@@ -104,6 +104,7 @@ const Signup = ({ history }) => {
           />
           Show Password
         </div>
+
         <div className="form-group">
           <label htmlFor="name">First Name: </label>
           <input
@@ -130,6 +131,7 @@ const Signup = ({ history }) => {
             className="form-control"
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="date">Birthday </label>
           <input
@@ -143,6 +145,7 @@ const Signup = ({ history }) => {
             className="form-control"
           />
         </div>
+
         <div className="form-desc">
           <label htmlFor="name">
             Tell us a little about yourself. This is so the host can get to know
@@ -164,6 +167,7 @@ const Signup = ({ history }) => {
             className="form-control"
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="name">What would you perfer?</label>
           <select
@@ -179,71 +183,79 @@ const Signup = ({ history }) => {
             <option value="Both"> Both</option>
           </select>
         </div>
-        <div className="form-address">
-          <label htmlFor="text">Address: </label>
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
-            value={state.address}
-            onChange={handleChange}
-            required
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="select">Gender: </label>
-          <select
-            type="select"
-            name="gender"
-            id="gender"
-            value={state.gender}
-            onChange={handleChange}
-            required
-            className="form-control"
-          >
+
+      <div className="form-address">
+        <label htmlFor="text">Address: </label>
+        <input
+          type="text"
+          name="address"
+          id="address"
+          placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
+          value={state.address}
+          onChange={handleChange}
+          required
+          className="form-control"
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="select">Gender: </label>
+        <select
+          type="select"
+          name="gender"
+          id="gender"
+          value={state.gender}
+          onChange={handleChange}
+          required
+          className="form-control"
+        >
             <option value=""> Select Gender:</option>
             <option value="Male"> Male</option>
             <option value="Female"> Female</option>
             <option value="Other"> Other</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="text">Phone: </label>
-          <input
-            type="text"
-            name="phone"
-            id="phone"
-            placeholder="Phone Number"
-            value={state.phone}
-            onChange={handleChange}
-            required
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="select">Lastly, what are you looking for? </label>
-          <select
-            type="select"
-            name="isHost"
-            id="isHost"
-            value={state.isHost}
-            onChange={handleChange}
-            required
-            className="form-control"
-          >
+
+        </select>
+      </div>
+      <div className="form-group">
+        <label htmlFor="text">Phone: </label>
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          placeholder="Phone Number"
+          value={state.phone}
+          onChange={handleChange}
+          required
+          className="form-control"
+        />
+      </div>
+        
+      <div className="form-group">
+        <label htmlFor="select">Lastly, what are you looking for? </label>
+        <select
+          type="select"
+          name="isHost"
+          id="isHost"
+          value={state.isHost}
+          onChange={handleChange}
+          required
+          className="form-control"
+        >
             <option value=""> Choose One:</option>
             <option value="false"> A place to stay</option>
             <option value="true"> To share my space</option>
-          </select>
-        </div>
-        <FileUpload />
-        <button type="submit" className="btn btn-primary actions">
-          Sign Up
-        </button>
-      </form>
-    </div>
+        </select>
+      </div>
+
+      <FileUpload />
+
+      <button type="submit" className="btn btn-primary actions">
+        Sign Up
+      </button>
+    </form>
+
+  </div>
+
+
   );
 };
 

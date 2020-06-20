@@ -19,7 +19,9 @@ export const Footer = () => {
         </ul>
       </div>
       <div className="col-1">
-        <h3>Help and Support</h3>
+        <h3>
+          Help and Support<i class="far fa-comments"></i>
+        </h3>
         <ul className="list-layout">
           <li className="link-contrast">Contact Us</li>
           <li className="link-contrast">Cancellation</li>

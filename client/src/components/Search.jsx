@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 // import Dropdown from './Dropdown';
 import { useHistory } from 'react-router-dom';
+import '../styles/mainsearch.css';
 
 const Search = (props) => {
   const { setSearch, handleSearch } = useContext(AppContext);
@@ -81,7 +82,7 @@ const Search = (props) => {
   });
 
   return (
-    <div>
+    <div className="search-main">
       <form onSubmit={(e) => handleSearch(e, history)}>
         <input
           type="text"

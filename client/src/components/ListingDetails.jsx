@@ -25,7 +25,7 @@ const ListingDetails = () => {
       setBooking(data);
       history.push('/confirmation');
     } else {
-      alert('Oops something went wrong');
+      alert('Oops something went wrong!');
     }
   };
 

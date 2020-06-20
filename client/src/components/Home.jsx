@@ -13,7 +13,7 @@ const Home = () => {
         <Search />
       </div>
       <div className="safety-list">
-        <h2> We Take Safety Serious!</h2>
+        <h2> We Take Safety Seriously!</h2>
         <div className="safety-steps">
           step 1 <i class="fas fa-user-shield icon-2x"></i>
         </div>

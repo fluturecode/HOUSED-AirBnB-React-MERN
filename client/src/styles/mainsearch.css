@@ -1,0 +1,28 @@
+.search.main {
+  display: flex;
+  justify-items: center;
+}
+
+button {
+  background-color: #ffa500;
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border: 5px solid #ffa500;
+}
+
+.input {
+  height: 35px;
+  width: 200px;
+  border: 2px solid #ffa500;
+  float: left;
+}
+
+.github-filter {
+  height: 30px;
+  width: 200px;
+  border: 1px solid #ffa500;
+}

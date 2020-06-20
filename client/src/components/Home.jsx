@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div className="home">
       <div className="top-img">
-        <img src={require('../images/cozy_room.jpg')} alt="Cozy bedroom" />
+        <img src={require('../images/homepage.jpg')} alt="Cozy bedroom" />
       </div>
 
       <div className="search-container">

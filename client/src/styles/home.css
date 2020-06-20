@@ -4,9 +4,10 @@
   background-color: linen;
 }
 
-.top-img {
-  border: 1px solid black;
-  background-color: rgb(76, 78, 78);
+.top-img img {
+  width: 100%;
+
+  background-color: linen;
 }
 
 .simple-steps {

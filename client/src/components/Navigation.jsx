@@ -32,7 +32,9 @@ export const Navigation = () => {
           <>
             <Link to="/howitworks"> How it works</Link>
             <Link to="/signup"> Sign Up</Link>
-            <Link to="/login"> Sign In</Link>
+            <Link to="/login">
+              <i class="far fa-user icon-4x"></i>
+            </Link>
           </>
         )}
       </div>

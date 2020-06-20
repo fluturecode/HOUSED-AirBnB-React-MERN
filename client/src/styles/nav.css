@@ -1,66 +1,64 @@
-
-
 .navbar {
-    overflow: hidden;
-   background-color: #FFA500;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  overflow: hidden;
+  background-color: #ffa500;
 }
-.navbar a{
-  
-    float: left;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+.navbar a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1.25em;
+  font-family: 'Karla', sans-serif;
+  color: rgb(104, 86, 86);
 }
 
 .navbar a:hover {
-    background-color: lightcoral;
-    color: white;
+  background-color: rgb(101, 127, 197);
+  color: white;
+  border-radius: 8%;
 }
 .navbar a.active {
-    background-color: #4CAF50;
-    color: white;
+  background-color: #4caf50;
+  color: white;
 }
 
 .nav-right {
-    float: right;
+  float: right;
+  padding-top: 50px;
+  padding-right: 200px;
 }
 
 .nav-login {
-    display: flex;
- justify-content: space-evenly;
-    width: 550px;
-    height: 52px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    line-height: 32px;
-    text-align: right;
-    
+  display: flex;
+  justify-content: space-evenly;
+  width: 550px;
+  height: 52px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  line-height: 32px;
+  text-align: right;
 }
 
 .nav-login button {
-    color: white;
-    font-weight: 600;
+  color: white;
+  font-weight: 600;
 }
 
 .nav-name {
-    /* background-color: lightseagreen; */
+  /* background-color: lightseagreen; */
   margin-top: 15px;
   color: white;
-  font-size: 17px;
 }
 
-
-
 button:hover {
-    background: lightcoral;
+  background: lightcoral;
 }
 
 button:active {
-    background: lightsalmon;
+  background: lightsalmon;
 }
 
+.logo {
+  padding-left: 100px;
+}

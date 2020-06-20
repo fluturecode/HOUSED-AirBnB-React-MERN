@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
-// import Calendar from './Calendar';
 import { AppContext } from '../context/AppContext';
-// import Dropdown from './Dropdown';
+import Dropdown from './Dropdown';
 import { useHistory } from 'react-router-dom';
 
 const Search = (props) => {
@@ -95,7 +94,6 @@ const Search = (props) => {
           <option>Choose Month</option>
           {filteredMonth}
         </select>
-        <input type="date" placeholder="End Date" />
         <button>Search</button>
       </form>
     </div>

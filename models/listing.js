@@ -8,13 +8,31 @@ const listingSchema = new mongoose.Schema(
       required: true
     },
 
+    hostPicture: {
+      type: String,
+      trim: true,
+      required: true
+    },
+
+    aboutHost: {
+      type: String,
+      trim: true,
+      required: true
+    },
+
+    hostAge: {
+      type: Number,
+      trim: true,
+      required: true
+    },
+
     title: {
       type: String,
       trim: true,
       required: true
     },
 
-    description: {
+    homeDescription: {
       type: String,
       required: true,
       trim: true
@@ -44,14 +62,18 @@ const listingSchema = new mongoose.Schema(
       required: true
     },
 
-    images: {
+    primaryImage: {
       type: String,
       required: true
     },
 
-    //   secondaryImages: [{
-    //     type: String,
-    // }],
+    secondImage: {
+      type: String
+    },
+
+    thirdImage: {
+      type: String
+    },
 
     price: {
       type: String,

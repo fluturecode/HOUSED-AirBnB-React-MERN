@@ -3,7 +3,7 @@
 }
 
 button {
-  background-color: white;
+  background-color: linen;
   color: #ffa500;
   font-size: 35px;
   font-weight: 700;
@@ -13,7 +13,7 @@ button {
   border: 5px solid #ffa500;
   margin: 25px;
 
-  border-radius: 10px;
+  border-radius: 200px;
 }
 
 .input {
@@ -23,6 +23,8 @@ button {
   float: left;
   margin: 25px;
   border-radius: 10px;
+  background-color: linen;
+  font-size: 20px;
 }
 
 .github-filter {
@@ -30,6 +32,6 @@ button {
   width: 400px;
   border: 5px solid #ffa500;
   margin: 25px;
-
+  background-color: linen;
   border-radius: 10px;
 }

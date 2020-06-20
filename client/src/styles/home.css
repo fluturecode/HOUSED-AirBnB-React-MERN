@@ -27,6 +27,12 @@
   border: 1px solid blue;
 }
 
+.safety-steps img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
 .become-host {
   border: 1px solid black;
 }

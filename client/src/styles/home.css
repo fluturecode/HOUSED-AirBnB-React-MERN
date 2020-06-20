@@ -19,21 +19,36 @@
 }
 
 .safety-list {
-  border: 1px solid black;
 }
 
 .safety-steps {
   display: inline;
 }
 
-.safety-steps img {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
+.safety-list img {
+  width: 150px;
+  height: 150px;
+  border: 5px solid lightseagreen;
+  border-radius: 25%;
 }
 
-.become-host {
-  border: 1px solid black;
+.safety-background {
+  float: left;
+}
+
+.safety-neighborhood {
+  float: left;
+}
+
+.safety-badges {
+  float: right;
+}
+
+.hostimage {
+  max-width: 100%;
+  margin-top: 75px;
+  height: auto;
+  border-radius: 30px;
 }
 
 .search-container {
@@ -42,7 +57,6 @@
   right: 600px;
   width: 150px;
   height: 100px;
-  border: 1px solid black;
 }
 
 .header {

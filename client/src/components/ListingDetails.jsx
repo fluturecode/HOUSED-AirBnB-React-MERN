@@ -25,7 +25,7 @@ const ListingDetails = () => {
       setBooking(data);
       history.push('/confirmation');
     } else {
-      alert('Opps something went wrong');
+      alert('Oops something went wrong');
     }
   };
 
@@ -36,6 +36,16 @@ const ListingDetails = () => {
   return (
     <div>
       <h1>{listing.title}</h1>
+      <img src={listing.hostPicture} alt="listing" />
+      <p>{listing.aboutHost}</p>
+      <p>{listing.hostAge}</p>
+      <p>{listing.firstName}</p>
+      <p>{listing.city}</p>
+      <p>{listing.state}</p>
+      <img src={listing.primaryImage} alt="listing" />
+      <img src={listing.secondImage} alt="listing" />
+      <img src={listing.thirdImage} alt="listing" />
+
       <button onClick={handleConfirm}>Confirm</button>
     </div>
   );

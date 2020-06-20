@@ -2,7 +2,6 @@ import React from 'react';
 import '../styles/home.css';
 import Search from './Search';
 import CustomChatbot from './chatbot/CustomChatbot';
-import Listings from './Listings';
 
 const Home = () => {
   return (
@@ -12,7 +11,6 @@ const Home = () => {
         <p> this is a test</p>
       </div>
       <Search />
-      {/* <Listings /> */}
       <div className="simple-steps">
         <h2> It's just 4 simple steps!</h2>
         <div className="all-steps">

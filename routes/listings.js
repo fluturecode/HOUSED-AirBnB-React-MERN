@@ -48,7 +48,7 @@ router.patch('/api/listings/:id', auth, async (req, res) => {
 // Get all listings
 router.get('/api/listings', async (req, res) => {
   try {
-    Listing.find()
+    await Listing.find()
       .exec()
       .then((result) => {
         res.status(200).json(result);
@@ -63,7 +63,7 @@ router.get('/api/listings/:id', async (req, res) => {
   const id = req.params.id;
 
   try {
-    Listing.findById({ _id: id })
+    await Listing.findById({ _id: id })
       .exec()
       .then((result) => {
         res.status(200).json(result);

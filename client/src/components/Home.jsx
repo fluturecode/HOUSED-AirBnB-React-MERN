@@ -11,11 +11,10 @@ const Home = () => {
   return (
     <div className="home">
       <div className="top-img">
-        <img src={require('../images/homepage.jpg')} alt="Cozy bedroom" />
-      </div>
-
-      <div className="search-container">
-        <Search />
+        <div className="search-container">
+          <Search />
+        </div>
+        <img src={require('../images/blueroom.jpg')} alt="Cozy bedroom" />
       </div>
 
       <div className="safety-list">

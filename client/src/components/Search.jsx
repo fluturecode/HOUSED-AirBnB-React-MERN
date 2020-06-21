@@ -83,7 +83,12 @@ const Search = (props) => {
 
   return (
     <div className="search-main">
-      <form onSubmit={(e) => handleSearch(e, search)}>
+      <form
+        onSubmit={async (e) => {
+          await handleSearch(e, search);
+          history.push('/listings');
+        }}
+      >
         <input
           type="text"
           className="input"

@@ -6,6 +6,7 @@ import bgcheck from '../images/bgcheck.png';
 import neighborhood from '../images/neighborhood.jpg';
 import membericon from '../images/membericon.jpg';
 import becomehost from '../images/becomehost.png';
+import Listings from './Listings';
 
 const Home = () => {
   return (

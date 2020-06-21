@@ -83,6 +83,7 @@ router.get('/api/listings/search/:city', async (req, res) => {
     console.log('insdie Try');
     let listings = await Listing.find();
     listings = listings.filter((listing) => listing.city === currentCity);
+    console.log(listings);
     res.json(listings);
   } catch (err) {
     res.json({ err });

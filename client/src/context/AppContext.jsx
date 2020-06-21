@@ -1,6 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
-
 const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {

@@ -1,11 +1,21 @@
 .imageContainer {
-  height: 304px;
-  width: 588px;
+  /* display: flex;
+  justify-content: flex-end;
+  justify-items: right; */
+  margin: auto;
+  display: inline;
+  justify-content: center;
+}
+
+.singleListing h1 {
+  text-align: center;
+  color: #ffa505;
 }
 
 .listingContainer {
-  /* display: inline-flex; */
-  /* align-items: center; */
+}
+
+.singleListing {
 }
 
 .price {
@@ -19,23 +29,33 @@
 }
 
 .show-more {
-  height: 22px;
-  width: 141px;
-  color: #b9babe;
+  color: gray;
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.09px;
-  line-height: 22px;
-  text-align: right;
+  margin-top: -15px;
+  margin-bottom: 100px;
+}
+.show-more:hover {
+  color: blue;
 }
 
 .listingTitle {
-  font-size: 29px;
+  font-size: 35px;
+  text-decoration: underline;
 }
 
 .border-box {
   box-sizing: border-box;
   height: 1px;
   width: 1200px;
-  border: 0.3px solid #979797;
+}
+
+.text {
+  font-size: 18px;
+  text-align: center;
+}
+
+.search-bar {
+  float: right;
 }

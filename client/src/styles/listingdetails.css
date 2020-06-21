@@ -26,11 +26,12 @@ h1 {
   text-decoration: underline;
   color: black;
   margin-left: 200px;
+  padding-top: 50px;
 }
 
 .listing-images {
   width: 500px;
   height: 500px;
-  border: 3px solid #ffa500;
+  border: 5px solid #ffa500;
   margin-top: 50px;
 }

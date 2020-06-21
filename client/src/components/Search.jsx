@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import '../styles/mainsearch.css';
 
 const Search = (props) => {
-  const { setSearch, handleSearch } = useContext(AppContext);
+  const { setSearch, search, handleSearch } = useContext(AppContext);
   const [formData, setFormData] = useState({ month: '' });
 
   const handleChange = ({ target: { name, value } }) => {
@@ -83,7 +83,7 @@ const Search = (props) => {
 
   return (
     <div className="search-main">
-      <form onSubmit={(e) => handleSearch(e, history)}>
+      <form onSubmit={(e) => handleSearch(e, search)}>
         <input
           type="text"
           className="input"

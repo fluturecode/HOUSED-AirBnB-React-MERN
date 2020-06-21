@@ -77,10 +77,12 @@ router.get('/api/listings/:id', async (req, res) => {
 
 router.get('/api/listings/search/:city', async (req, res) => {
   console.log('hi!');
-  const city = req.params.city;
-  console.log(city);
+  const currentCity = req.params.city;
+  console.log(currentCity);
   try {
-    const listings = await Listing.find({ city });
+    console.log('insdie Try');
+    let listings = await Listing.find();
+    listings = listings.filter((listing) => listing.city === currentCity);
     res.json(listings);
   } catch (err) {
     res.json({ err });

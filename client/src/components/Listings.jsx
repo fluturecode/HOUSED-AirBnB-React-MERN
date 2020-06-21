@@ -13,8 +13,7 @@ const Listings = () => {
 
   return (
     <div className="singleListing">
-      <Search />
-      <h1>Listings</h1>
+      <div clasName="search-bar"></div>
       {listings && listings.length > 0 ? (
         listings.map((listing) => {
           return (
@@ -23,20 +22,25 @@ const Listings = () => {
               onClick={() => handleClick(listing._id)}
               className="listingContainer"
             >
-              <p className="listingTitle">{listing.title}</p>
-              <span>{listing.city}</span>, <span>{listing.state}</span>
-              <p>{listing.zipCode}</p>
-              <p>{listing.homeDescription}</p>
-              <p className="price">{listing.price}</p>
-              <div className="imageContainer">
-                <img
-                  src={listing.primaryImage}
-                  alt="listing"
-                  className="singleListingImage"
-                />
+              <div className="text">
+                <p className="listingTitle">{listing.title}</p>
+                <p>
+                  {listing.city}, {listing.state} {listing.zipCode}
+                </p>
+
+                <p>{listing.homeDescription}</p>
+                <p className="price">{listing.price}</p>
+                <div className="imageContainer">
+                  <span>
+                    <img
+                      src={listing.primaryImage}
+                      alt="listing"
+                      className="singleListingImage"
+                    />
+                  </span>
+                  <p className="show-more">Click image for more info</p>
+                </div>
               </div>
-              <p className="show-more">show more</p>
-              <p className="border-box"> </p>
             </div>
           );
         })

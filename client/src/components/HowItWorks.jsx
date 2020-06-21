@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../styles/howItWorks.css';
 import WOW from 'wowjs';
 
 class HowItWorks extends React.Component {
@@ -8,40 +8,36 @@ class HowItWorks extends React.Component {
   }
   render() {
     return (
-      <div class="howItWorks">
+      <div class="main">
         <div class="main-img">
-          <img
-            src={require('../images/Image Verify Info.png')}
-            alt="Two people high-fiving"
-          />
+          <img src={require('../images/whitebed.jpg')} alt="Bedroom" />
         </div>
         <div class="steps">
-          <ol>
+          <ul>
             <li
               className="wow slideInLeft"
               data-wow-duration="2s"
               data-wow-delay="2s"
             >
-              Step 1
+              Step 1 - Search our listings, and select a place.
             </li>
-            <p></p>
             <li
               className="wow slideInLeft"
               data-wow-duration="2s"
-              data-wow-delay="4s"
+              data-wow-delay="5s"
             >
-              Step 2
+              Step 2 - Fill out your profile, add your preferences, and upload
+              your ID.
             </li>
-            <p></p>
             <li
               className="wow slideInLeft"
               data-wow-duration="2s"
-              data-wow-delay="6s"
+              data-wow-delay="8s"
             >
-              Step 3
+              Step 3 - Once you are verified, and your host accepts the request,
+              we will connect you with you new home.
             </li>
-            <p></p>
-          </ol>
+          </ul>
         </div>
       </div>
     );

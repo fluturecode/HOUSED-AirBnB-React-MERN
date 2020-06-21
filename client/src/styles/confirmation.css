@@ -1,17 +1,19 @@
 .conf-main {
-    text-align: center;
-    background-color: linen;
+  text-align: center;
+  background-color: linen;
 }
 .header {
-    color: #FFA500;
+  color: #ffa500;
 }
 .host {
-    color: lightseagreen;
-    text-decoration: underline;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 25px;
+  color: lightseagreen;
+  text-decoration: underline;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 25px;
 }
-img {
-    padding: 20px;
+.conf-image {
+  height: 304px;
+  width: 588px;
+  border-radius: 45px;
 }

@@ -37,7 +37,7 @@ const ListingDetails = () => {
   return (
     <div className="single-listing">
       <div className="host-profile">
-        <h1>{listing.title}</h1>
+        <h1 className="title">{listing.title}</h1>
         <img className="host-img" src={listing.hostPicture} alt="listing" />
 
         <p className="host-info">{listing.aboutHost}</p>

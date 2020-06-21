@@ -12,12 +12,17 @@ const Home = () => {
   return (
     <div className="home">
       <div className="top-img">
+        <div className="main-square">
+          <div className="box-header">Looking for a place to stay?</div>
+          <div className="box-text">
+            We'll find your next home, just choose what works best for you!
+          </div>
+        </div>
         <div className="search-container">
           <Search />
         </div>
         <img src={require('../images/blueroom.jpg')} alt="Cozy bedroom" />
       </div>
-
       <div className="safety-list">
         <h1 className="header"> We Take Safety Seriously!</h1>
         <div className="safety-background">

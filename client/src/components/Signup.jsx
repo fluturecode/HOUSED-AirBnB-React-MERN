@@ -21,7 +21,7 @@ const Signup = ({ history }) => {
   });
   const [passwordShow, setPasswordShow] = useState(false);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
@@ -38,8 +38,9 @@ const Signup = ({ history }) => {
     phone,
     isHost
   } = state;
-  const handleSignUp = async e => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
+    console.log('front end function');
     await axios({
       method: 'POST',
       url: '/api/register',
@@ -58,18 +59,19 @@ const Signup = ({ history }) => {
       }
     })
       .then(({ data }) => {
+        console.log('.then', data);
         setUser(data.user);
         setLoggedIn(true);
         setState({});
         localStorage.setItem('token', data.token);
         history.push('/');
       })
-      .catch(error => console.log(error.message));
+      .catch((error) => console.log(error.message));
   };
 
   return (
     <div className="sign-up-div">
-      <form onSubmit={handleSignUp}>
+      <form onSubmit={(e) => handleSignUp(e)}>
         <div className="sign-up-intro">
           Follow the steps to sign up and find your perfect stay!
         </div>
@@ -184,78 +186,74 @@ const Signup = ({ history }) => {
           </select>
         </div>
 
-      <div className="form-address">
-        <label htmlFor="text">Address: </label>
-        <input
-          type="text"
-          name="address"
-          id="address"
-          placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
-          value={state.address}
-          onChange={handleChange}
-          required
-          className="form-control"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="select">Gender: </label>
-        <select
-          type="select"
-          name="gender"
-          id="gender"
-          value={state.gender}
-          onChange={handleChange}
-          required
-          className="form-control"
-        >
+        <div className="form-address">
+          <label htmlFor="text">Address: </label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="Ex. 1600 Pennsylvania Ave NW, Washington, DC 20500"
+            value={state.address}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="select">Gender: </label>
+          <select
+            type="select"
+            name="gender"
+            id="gender"
+            value={state.gender}
+            onChange={handleChange}
+            required
+            className="form-control"
+          >
             <option value=""> Select Gender:</option>
             <option value="Male"> Male</option>
             <option value="Female"> Female</option>
             <option value="Other"> Other</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="text">Phone: </label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number"
+            value={state.phone}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+        </div>
 
-        </select>
-      </div>
-      <div className="form-group">
-        <label htmlFor="text">Phone: </label>
-        <input
-          type="text"
-          name="phone"
-          id="phone"
-          placeholder="Phone Number"
-          value={state.phone}
-          onChange={handleChange}
-          required
-          className="form-control"
-        />
-      </div>
-        
-      <div className="form-group">
-        <label htmlFor="select">Lastly, what are you looking for? </label>
-        <select
-          type="select"
-          name="isHost"
-          id="isHost"
-          value={state.isHost}
-          onChange={handleChange}
-          required
-          className="form-control"
-        >
+        <div className="form-group">
+          <label htmlFor="select">Lastly, what are you looking for? </label>
+          <select
+            type="select"
+            name="isHost"
+            id="isHost"
+            value={state.isHost}
+            onChange={handleChange}
+            required
+            className="form-control"
+          >
             <option value=""> Choose One:</option>
             <option value="false"> A place to stay</option>
             <option value="true"> To share my space</option>
-        </select>
-      </div>
+          </select>
+        </div>
 
-      <FileUpload />
+        <FileUpload />
 
-      <button type="submit" className="btn btn-primary actions">
-        Sign Up
-      </button>
-    </form>
-
-  </div>
-
-
+        <button type="submit" className="btn btn-primary actions">
+          Sign Up
+        </button>
+      </form>
+    </div>
   );
 };
 

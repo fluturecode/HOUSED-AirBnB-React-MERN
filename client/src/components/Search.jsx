@@ -89,18 +89,24 @@ const Search = (props) => {
           history.push('/listings');
         }}
       >
-        <input
-          type="text"
-          className="input"
-          placeholder="Search by City"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <div className="container"></div>
-        <select className="github-filter" onChange={handleChange}>
-          <option>Choose Month</option>
-          {filteredMonth}
-        </select>
-        <button>Search</button>
+        <div>
+          <input
+            type="text"
+            className="input"
+            placeholder="Search by City"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <select className="monthMenu" onChange={handleChange}>
+            <option>Choose Month</option>
+            {filteredMonth}
+          </select>
+        </div>
+        <div className="search-btn">
+          <button>Search</button>
+        </div>
       </form>
     </div>
   );

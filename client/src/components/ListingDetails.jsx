@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import '../styles/listingdetails.css';
 
 const ListingDetails = () => {
   const { setBooking } = useContext(AppContext);
@@ -34,19 +35,30 @@ const ListingDetails = () => {
   }, []);
 
   return (
-    <div>
-      <h1>{listing.title}</h1>
-      <img src={listing.hostPicture} alt="listing" />
-      <p>{listing.aboutHost}</p>
-      <p>{listing.hostAge}</p>
-      <p>{listing.firstName}</p>
-      <p>{listing.city}</p>
-      <p>{listing.state}</p>
-      <img src={listing.primaryImage} alt="listing" />
-      <img src={listing.secondImage} alt="listing" />
-      <img src={listing.thirdImage} alt="listing" />
+    <div className="single-listing">
+      <div className="host-profile">
+        <h1>{listing.title}</h1>
+        <img className="host-img" src={listing.hostPicture} alt="listing" />
 
-      <button onClick={handleConfirm}>Confirm</button>
+        <p className="host-info">{listing.aboutHost}</p>
+
+        <p className="host-info">Age: {listing.hostAge}</p>
+
+        <p className="host-info">Host's Name: {listing.firstName}</p>
+
+        <p className="host-info">
+          Location: {listing.city}, {listing.state}
+        </p>
+      </div>
+      <img
+        className="listing-images"
+        src={listing.primaryImage}
+        alt="listing"
+      />
+      <img className="listing-images" src={listing.secondImage} alt="listing" />
+      <img className="listing-images" src={listing.thirdImage} alt="listing" />
+
+      <button onClick={handleConfirm}>Request Info</button>
     </div>
   );
 };

@@ -1,0 +1,36 @@
+.single-listing {
+  text-align: center;
+  background-color: linen;
+  margin-top: -20px;
+}
+
+.host-profile {
+  width: 50%;
+  margin: auto;
+}
+
+.host-img {
+  border-radius: 50%;
+  float: left;
+  width: 100px;
+  height: 100px;
+  border: 5px solid #ffa500;
+}
+
+.host-info {
+  color: black;
+  margin-left: 200px;
+}
+
+h1 {
+  text-decoration: underline;
+  color: black;
+  margin-left: 200px;
+}
+
+.listing-images {
+  width: 500px;
+  height: 500px;
+  border: 3px solid #ffa500;
+  margin-top: 50px;
+}

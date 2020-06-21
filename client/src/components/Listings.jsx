@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import Search from './Search';
 import { useHistory } from 'react-router-dom';
+import '../styles/listings.css';
 
 const Listings = () => {
   const { listings } = useContext(AppContext);
@@ -11,22 +12,31 @@ const Listings = () => {
   };
 
   return (
-    <div>
+    <div className="singleListing">
       <Search />
       <h1>Listings</h1>
       {listings && listings.length > 0 ? (
         listings.map((listing) => {
           return (
-            <div key={listing._id} onClick={() => handleClick(listing._id)}>
-              <h3>{listing.title}</h3>
-              <p> {listing.firstName}</p>
-              <p>{listing.address}</p>
-              <p>{listing.city}</p>
-              <p>{listing.state}</p>
+            <div
+              key={listing._id}
+              onClick={() => handleClick(listing._id)}
+              className="listingContainer"
+            >
+              <p className="listingTitle">{listing.title}</p>
+              <span>{listing.city}</span>, <span>{listing.state}</span>
               <p>{listing.zipCode}</p>
               <p>{listing.homeDescription}</p>
-              <p>{listing.price}</p>
-              <img src={listing.primaryImage} alt="listing" />
+              <p className="price">{listing.price}</p>
+              <div className="imageContainer">
+                <img
+                  src={listing.primaryImage}
+                  alt="listing"
+                  className="singleListingImage"
+                />
+              </div>
+              <p className="show-more">show more</p>
+              <p className="border-box"> </p>
             </div>
           );
         })

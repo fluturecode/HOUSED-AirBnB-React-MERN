@@ -1,0 +1,41 @@
+.imageContainer {
+  height: 304px;
+  width: 588px;
+}
+
+.listingContainer {
+  /* display: inline-flex; */
+  /* align-items: center; */
+}
+
+.price {
+  font-size: 21px;
+}
+
+.singleListingImage {
+  height: 304px;
+  width: 588px;
+  border-radius: 45px;
+}
+
+.show-more {
+  height: 22px;
+  width: 141px;
+  color: #b9babe;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.09px;
+  line-height: 22px;
+  text-align: right;
+}
+
+.listingTitle {
+  font-size: 29px;
+}
+
+.border-box {
+  box-sizing: border-box;
+  height: 1px;
+  width: 1200px;
+  border: 0.3px solid #979797;
+}

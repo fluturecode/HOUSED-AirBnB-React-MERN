@@ -34,7 +34,7 @@ export const Navigation = () => {
             <Link to="/AboutUs"> About Us </Link>
             <Link to="/signup"> Sign Up</Link>
             <Link to="/login">
-              <i class="far fa-user icon-4x"></i>
+              <i class="far fa-user icon"></i>
             </Link>
           </>
         )}

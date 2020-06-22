@@ -1,11 +1,7 @@
 import React from 'react';
 import '../styles/howItWorks.css';
-import WOW from 'wowjs';
 
 class HowItWorks extends React.Component {
-  componentDidMount() {
-    new WOW.WOW().init();
-  }
   render() {
     return (
       <div className="main-hiw">

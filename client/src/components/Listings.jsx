@@ -13,7 +13,7 @@ const Listings = () => {
 
   return (
     <div className="singleListing">
-      <div clasName="search-bar"></div>
+      <div className="search-bar"></div>
       {listings && listings.length > 0 ? (
         listings.map((listing) => {
           return (

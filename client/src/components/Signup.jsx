@@ -4,21 +4,23 @@ import axios from 'axios';
 import '../styles/signup.css';
 import FileUpload from './FileUpload';
 
+const initialState = {
+  email: '',
+  password: '',
+  birthday: '',
+  phone: '',
+  address: '',
+  firstName: '',
+  lastName: '',
+  preferencesExchange: 'Pay',
+  isHost: '',
+  gender: '',
+  description: ''
+};
+
 const Signup = ({ history }) => {
   const { setUser, setLoggedIn } = useContext(AppContext);
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-    birthday: '',
-    phone: '',
-    address: '',
-    firstName: '',
-    lastName: '',
-    preferencesExchange: 'Pay',
-    isHost: '',
-    gender: '',
-    description: ''
-  });
+  const [state, setState] = useState(initialState);
   const [passwordShow, setPasswordShow] = useState(false);
 
   const handleChange = (e) => {
@@ -38,6 +40,7 @@ const Signup = ({ history }) => {
     phone,
     isHost
   } = state;
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     console.log('front end function');
@@ -62,12 +65,14 @@ const Signup = ({ history }) => {
         console.log('.then', data);
         setUser(data.user);
         setLoggedIn(true);
-        setState({});
+        setState(initialState);
         localStorage.setItem('token', data.token);
         history.push('/');
       })
       .catch((error) => console.log(error.message));
   };
+
+  const isInvalid = state.password.length < 8;
 
   return (
     <div className="sign-up-div">
@@ -249,7 +254,11 @@ const Signup = ({ history }) => {
 
         <FileUpload />
 
-        <button type="submit" className="btn btn-primary actions">
+        <button
+          type="submit"
+          className="btn btn-primary actions"
+          disabled={isInvalid}
+        >
           Sign Up
         </button>
       </form>

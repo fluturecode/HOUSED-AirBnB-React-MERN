@@ -42,29 +42,7 @@ function CustomChatbot(props) {
     {
       id: 'Tell about Housed',
       message:
-        'Amazing! Well we are certainly glad you found us, and since you are here let me point out some things to help guide you through our site. Is that ok with you?',
-      trigger: 'Learn about Housed'
-    },
-    {
-      id: 'Learn about Housed',
-      user: true,
-      trigger: 'About Housed'
-    },
-    {
-      id: 'About Housed',
-      message:
-        'You can search available listings by clicking on the search button to the left. Simple right?',
-      trigger: 'Search button'
-    },
-    {
-      id: 'Search button',
-      user: true,
-      trigger: 'Safety'
-    },
-    {
-      id: 'Safety',
-      message:
-        'At Housed we take the safety of all of our guests very seriously, that is why we verify and conduct background checks on all our hosts. Is safety important for you?',
+        'Amazing! Well we are certainly glad you found us. At Housed we take safety very seriously. Is safety important for you?',
       trigger: 'User safety response'
     },
     {

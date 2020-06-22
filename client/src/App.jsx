@@ -11,7 +11,6 @@ import Footer from './components/Footer';
 import HowItWorks from './components/HowItWorks';
 import ListingDetails from './components/ListingDetails';
 import Confirmation from './components/Confirmation';
-import AboutUs from './components/AboutUs';
 
 const App = () => {
   return (
@@ -28,7 +27,6 @@ const App = () => {
           <Route exact path="/confirmation" component={Confirmation} />
           <Route path="/listings/search/:city" component={Listings} />
           <Route exact path="/listings/:id" component={ListingDetails} />
-          <Route exact path="/aboutus" component={AboutUs} />
         </Switch>
         <Footer />
       </BrowserRouter>

@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 
-button {
+.search-btn button {
   background-color: linen;
   color: #ffa500;
   font-size: 35px;

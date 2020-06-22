@@ -58,7 +58,9 @@ const ListingDetails = () => {
       <img className="listing-images" src={listing.secondImage} alt="listing" />
       <img className="listing-images" src={listing.thirdImage} alt="listing" />
 
-      <button onClick={handleConfirm}>Request Info</button>
+      <button className="btn-info" onClick={handleConfirm}>
+        Request Info
+      </button>
     </div>
   );
 };

@@ -61,7 +61,6 @@ router.get('/api/listings', async (req, res) => {
 // Get a specific listing
 router.get('/api/listings/:id', async (req, res) => {
   const id = req.params.id;
-
   try {
     await Listing.findById({ _id: id })
       .exec()
@@ -76,14 +75,10 @@ router.get('/api/listings/:id', async (req, res) => {
 //Search listings by City
 
 router.get('/api/listings/search/:city', async (req, res) => {
-  console.log('hi!');
   const currentCity = req.params.city;
-  console.log(currentCity);
   try {
-    console.log('insdie Try');
     let listings = await Listing.find();
     listings = listings.filter((listing) => listing.city === currentCity);
-    console.log(listings);
     res.json(listings);
   } catch (err) {
     res.json({ err });

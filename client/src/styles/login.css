@@ -1,0 +1,63 @@
+.main-login {
+  height: 1000px;
+  background-color: linen;
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-login img {
+  margin-top: 30px;
+  max-height: 500px;
+  max-width: 400px;
+}
+
+.password {
+  height: 78px;
+  width: 389px;
+  font-size: 28px;
+}
+
+.email {
+  height: 78px;
+  width: 389px;
+  font-size: 28px;
+}
+
+.loginbutton {
+  height: 64px;
+  width: 397px;
+  font-size: 22px;
+  letter-spacing: 0.09px;
+}
+
+.login {
+  padding-top: 20px;
+  font-size: 36px;
+}
+
+.welcome {
+  padding-top: 20px;
+  font-size: 16px;
+  float: left;
+  left: 0;
+}
+
+.forgotemail {
+  text-decoration: underline;
+}
+
+.forgotpassword {
+  text-decoration: underline;
+  padding-bottom: 20px;
+}
+
+.emailtext {
+  padding-top: 10px;
+  font-size: 24px;
+}
+
+.passwordtext {
+  padding-top: 10px;
+  font-size: 24px;
+}

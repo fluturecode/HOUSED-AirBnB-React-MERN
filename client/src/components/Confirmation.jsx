@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 import '../styles/confirmation.css';
 
 export default () => {
-  const { user, listing, booking } = useContext(AppContext);
+  const { user, booking } = useContext(AppContext);
 
   if (!booking) return null;
 

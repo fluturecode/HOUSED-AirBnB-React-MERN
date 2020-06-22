@@ -22,8 +22,7 @@ class HowItWorks extends React.Component {
             </p>
             <h4>Step 3</h4>
             <p>
-              Once you are verified, and your host accepts the request, we will
-              connect you with you new home.
+              You will get a confirmation, and when we will connect you with the hose and your new home!
             </p>
           </div>
           <img

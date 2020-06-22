@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import Search from './Search';
 import { useHistory } from 'react-router-dom';
 import '../styles/listings.css';
 

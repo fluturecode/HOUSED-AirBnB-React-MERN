@@ -1,3 +1,5 @@
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+require('./db/mongoose');
 const express = require('express');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
@@ -11,7 +13,7 @@ require('./db/mongoose');
 // const dotenv = require('dotenv');
 // dotenv.config();
 
-const app = express();
+const app = require('./app');
 
 app.use(fileUpload());
 
@@ -23,7 +25,7 @@ app.post('/upload', (req, res) => {
 
   const file = req.files.file;
 
-  file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
+  file.mv(`${__dirname}/client/public/uploads/${file.name}`, (err) => {
     if (err) {
       console.log(err);
       return res.status(500).send(err);

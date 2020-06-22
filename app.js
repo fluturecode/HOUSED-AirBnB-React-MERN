@@ -2,6 +2,7 @@ require('./db/mongoose');
 
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 // import routes
 const userRouter = require('./routes/users');

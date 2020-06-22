@@ -4,21 +4,23 @@ import axios from 'axios';
 import '../styles/signup.css';
 import FileUpload from './FileUpload';
 
+const initialState = {
+  email: '',
+  password: '',
+  birthday: '',
+  phone: '',
+  address: '',
+  firstName: '',
+  lastName: '',
+  preferencesExchange: 'Pay',
+  isHost: '',
+  gender: '',
+  description: ''
+};
+
 const Signup = ({ history }) => {
   const { setUser, setLoggedIn } = useContext(AppContext);
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-    birthday: '',
-    phone: '',
-    address: '',
-    firstName: '',
-    lastName: '',
-    preferencesExchange: 'Pay',
-    isHost: '',
-    gender: '',
-    description: ''
-  });
+  const [state, setState] = useState(initialState);
   const [passwordShow, setPasswordShow] = useState(false);
 
   const handleChange = (e) => {
@@ -38,6 +40,7 @@ const Signup = ({ history }) => {
     phone,
     isHost
   } = state;
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     await axios({
@@ -60,12 +63,14 @@ const Signup = ({ history }) => {
       .then(({ data }) => {
         setUser(data.user);
         setLoggedIn(true);
-        setState({});
+        setState(initialState);
         localStorage.setItem('token', data.token);
         history.push('/');
       })
       .catch((error) => console.log(error.message));
   };
+
+  const isInvalid = state.password.length < 8;
 
   return (
     <div className="sign-up-div">
@@ -174,7 +179,6 @@ const Signup = ({ history }) => {
 
         <div className="form-group">
           <label htmlFor="name">
-            {' '}
             <p> What would you perfer? </p>
           </label>
           <select
@@ -206,7 +210,7 @@ const Signup = ({ history }) => {
         </div>
         <div className="form-group">
           <label htmlFor="select">
-            <p>Gender: </p>{' '}
+            <p>Gender: </p>
           </label>
           <select
             type="select"
@@ -225,7 +229,6 @@ const Signup = ({ history }) => {
         </div>
         <div className="form-group">
           <label htmlFor="text">
-            {' '}
             <p>Phone: </p>
           </label>
           <input
@@ -260,8 +263,7 @@ const Signup = ({ history }) => {
         <p> Please Upload License (optional until booking)</p>
 
         <FileUpload />
-
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="submit-btn" disabled={isInvalid}>
           Sign Up
         </button>
       </form>

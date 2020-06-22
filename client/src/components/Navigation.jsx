@@ -8,7 +8,6 @@ import logo from '../images/housed.png';
 export const Navigation = () => {
   const { user, loggedIn, setLoggedIn } = useContext(AppContext);
 
-  // remove this useEffect after development
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {

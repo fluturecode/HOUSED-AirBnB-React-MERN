@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import Search from './Search';
 import { useHistory } from 'react-router-dom';
 import '../styles/listings.css';
 
@@ -13,7 +12,7 @@ const Listings = () => {
 
   return (
     <div className="singleListing">
-      <div clasName="search-bar"></div>
+      <div className="search-bar"></div>
       {listings && listings.length > 0 ? (
         listings.map((listing) => {
           return (

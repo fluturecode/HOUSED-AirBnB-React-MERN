@@ -14,8 +14,6 @@ export const Navigation = () => {
       setLoggedIn(true);
     }
   }, []);
-  console.log(loggedIn);
-  console.log(user);
 
   return (
     <div className="navbar">
@@ -30,7 +28,6 @@ export const Navigation = () => {
         ) : (
           <>
             <Link to="/howitworks"> How it works</Link>
-            <Link to="/AboutUs"> About Us </Link>
             <Link to="/signup"> Sign Up</Link>
             <Link to="/login">
               <i className="far fa-user icon"></i>

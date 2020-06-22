@@ -15,13 +15,13 @@ export default () => {
       />
       <h2 className="header"> Reservation Sent!</h2>
       Thanks for your inquiry {user.firstName}
-      <p>
+      <div>
         {' '}
         Your request for more information about the home in{' '}
         <p className="host">{booking.listing_id.city}</p> is being sent to:{' '}
         <p className="host">{booking.listing_id.firstName}</p>{' '}
-      </p>
-      <p>Thanks for requesting more information on your booking:</p>
+      </div>
+      <p>You requested information for:</p>
       <h4 className="header">{booking.listing_id.title}. </h4>
       <img
         className="conf-image"
@@ -46,11 +46,7 @@ export default () => {
         for both Guest and Host to sign.
       </p>
       <h4 className="header"> Questions?</h4>
-      <p>
-        {' '}
-        Any questions you may have about the process, please email:
-        info@housed.com
-      </p>
+      <p> For any questions or concerns please email: info@housed.com</p>
     </div>
   );
 };

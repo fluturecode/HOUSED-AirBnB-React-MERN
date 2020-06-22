@@ -43,7 +43,6 @@ const Signup = ({ history }) => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log('front end function');
     await axios({
       method: 'POST',
       url: '/api/register',
@@ -62,7 +61,6 @@ const Signup = ({ history }) => {
       }
     })
       .then(({ data }) => {
-        console.log('.then', data);
         setUser(data.user);
         setLoggedIn(true);
         setState(initialState);
@@ -77,11 +75,12 @@ const Signup = ({ history }) => {
   return (
     <div className="sign-up-div">
       <form onSubmit={(e) => handleSignUp(e)}>
-        <div className="sign-up-intro">
-          Follow the steps to sign up and find your perfect stay!
-        </div>
+        <h3>Follow the steps to sign up and find your perfect stay!</h3>
+
         <div className="form-group">
-          <label htmlFor="email">Email: </label>
+          <label htmlFor="email">
+            <p>Email: </p>{' '}
+          </label>
           <input
             type="email"
             name="email"
@@ -94,7 +93,7 @@ const Signup = ({ history }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Password: </label>
+          <label htmlFor="password">Password: </label>
           <input
             type={passwordShow ? 'text' : 'password'}
             name="password"
@@ -105,11 +104,13 @@ const Signup = ({ history }) => {
             className="form-control"
             id="myInput"
           />
-          <input
-            type="checkbox"
-            onChange={() => setPasswordShow(!passwordShow)}
-          />
-          Show Password
+          <div>
+            <input
+              type="checkbox"
+              onChange={() => setPasswordShow(!passwordShow)}
+            />
+          </div>
+          Show password
         </div>
 
         <div className="form-group">
@@ -140,7 +141,9 @@ const Signup = ({ history }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="date">Birthday </label>
+          <label htmlFor="date">
+            <p>Birthday </p>
+          </label>
           <input
             type="date"
             name="birthday"
@@ -158,7 +161,6 @@ const Signup = ({ history }) => {
             Tell us a little about yourself. This is so the host can get to know
             you when you make a reservation.
           </label>
-          <label> We'll help you out with some questions you can answer!</label>
           <p>
             Do you have a pet? Are you okay with staying with other guests as
             well? What type of stay are you looking for?{' '}
@@ -176,7 +178,9 @@ const Signup = ({ history }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="name">What would you perfer?</label>
+          <label htmlFor="name">
+            <p> What would you perfer? </p>
+          </label>
           <select
             id="preferenceExchange"
             name="preferencesExchange"
@@ -205,7 +209,9 @@ const Signup = ({ history }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="select">Gender: </label>
+          <label htmlFor="select">
+            <p>Gender: </p>
+          </label>
           <select
             type="select"
             name="gender"
@@ -222,7 +228,9 @@ const Signup = ({ history }) => {
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="text">Phone: </label>
+          <label htmlFor="text">
+            <p>Phone: </p>
+          </label>
           <input
             type="text"
             name="phone"
@@ -252,13 +260,10 @@ const Signup = ({ history }) => {
           </select>
         </div>
 
-        <FileUpload />
+        <p> Please Upload License (optional until booking)</p>
 
-        <button
-          type="submit"
-          className="btn btn-primary actions"
-          disabled={isInvalid}
-        >
+        <FileUpload />
+        <button type="submit" className="submit-btn" disabled={isInvalid}>
           Sign Up
         </button>
       </form>

@@ -52,11 +52,11 @@
 }
 
 button:hover {
-  background: lightcoral;
+  background: #ffa500;
 }
 
 button:active {
-  background: lightsalmon;
+  background: whitesmoke;
 }
 
 .logo {

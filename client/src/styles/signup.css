@@ -1,25 +1,36 @@
 .form-group {
-    width: 300px;
-    text-align: center;
+  width: 300px;
+  text-align: center;
+  margin: 15px;
+}
+
+.form-group p {
+  text-decoration: underline;
 }
 
 .form-desc {
-    width: 300px;
-    
+  width: 300px;
 }
+
 .form-address {
-    width: 500px;
+  width: 500px;
 }
 
 .sign-up-div {
-    display: flex;
-    justify-content: center;
+  background-color: linen;
+  display: flex;
+  justify-content: center;
 }
 
 textarea {
-    padding: 7px 20px 7px 0;
-    min-height: 200px;
-    min-width: 500px;
-    resize: none;
+  padding: 7px 20px 7px 0;
+  min-height: 200px;
+  min-width: 500px;
+  resize: none;
+}
 
+.submit-btn {
+  margin-top: 35px;
+  margin-bottom: 25px;
+  margin-left: 110px;
 }

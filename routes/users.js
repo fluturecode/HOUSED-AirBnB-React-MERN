@@ -38,14 +38,14 @@ router.patch('/api/users/me', auth, async (req, res) => {
     'description',
     'preferencesExchange'
   ];
-  const isValidOperation = updates.every(update =>
+  const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
   if (!isValidOperation) {
     return res.status(400).send({ error: 'Invalid updates!' });
   }
   try {
-    updates.forEach(update => (req.user[update] = req.body[update]));
+    updates.forEach((update) => (req.user[update] = req.body[update]));
     await req.user.save();
     res.send(req.user);
   } catch (e) {
@@ -64,7 +64,6 @@ router.delete('/api/users/me', auth, async (req, res) => {
 });
 // Login a user
 router.post('/api/users/login', async (req, res) => {
-  console.log(req.body);
   try {
     const user = await User.findByCredentials(
       req.body.email,
@@ -74,13 +73,12 @@ router.post('/api/users/login', async (req, res) => {
     res.send({ user, token });
   } catch (e) {
     res.status(400).send();
-    console.log(e);
   }
 });
 // Logout a user
 router.post('/api/users/logout', auth, async (req, res) => {
   try {
-    req.user.tokens = req.user.tokens.filter(token => {
+    req.user.tokens = req.user.tokens.filter((token) => {
       return token.token !== req.token;
     });
     await req.user.save();

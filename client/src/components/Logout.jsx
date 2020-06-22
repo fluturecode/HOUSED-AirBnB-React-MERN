@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import '../styles/nav.css'
+import '../styles/logout.css';
 
 const Logout = () => {
-  const history = useHistory()
+  const history = useHistory();
   const { user, setUser, setLoggedIn } = useContext(AppContext);
 
   const logOut = async () => {
@@ -21,27 +21,23 @@ const Logout = () => {
         localStorage.removeItem('token');
         setUser({});
         setLoggedIn(false);
-        history.push('/')
+        history.push('/');
       })
-      .catch(e => console.log(e.message.toString()));
+      .catch((e) => console.log(e.message.toString()));
   };
   return (
     <div>
-       
-    <div className="nav-login">
-    <Link to="/howitworks"> How it works</Link>
-     <div className="nav-name">
-      {user ? <p> Hi, {user.firstName} 😃</p> : null}
+      <Link to="/howitworks" className="hiw">
+        How it works
+      </Link>
+      <div className="nav-login">
+        {user ? <p> Hi, {user.firstName} 😃</p> : null}
 
-
+        <button className="logout-btn" onClick={logOut}>
+          Logout
+        </button>
       </div>
-      
-      <button className="btn outline-danger" onClick={logOut}>
-      Log out
-    </button>
-
     </div>
-  </div>
   );
 };
 

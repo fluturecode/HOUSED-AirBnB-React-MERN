@@ -6,14 +6,14 @@ import Logout from './Logout';
 import logo from '../images/housed.png';
 
 export const Navigation = () => {
-  const { user, loggedIn, setLoggedIn } = useContext(AppContext);
+  const { loggedIn, setLoggedIn } = useContext(AppContext);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       setLoggedIn(true);
     }
-  }, []);
+  });
 
   return (
     <div className="navbar">

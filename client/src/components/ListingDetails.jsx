@@ -32,7 +32,7 @@ const ListingDetails = () => {
 
   useEffect(() => {
     axios.get(`/api/listings/${id}`).then(({ data }) => setListing(data));
-  }, []);
+  }, [id]);
 
   return (
     <div className="single-listing">

@@ -60,10 +60,7 @@ const Login = ({ history }) => {
             Log In
           </button>
         </form>
-        <img
-          src={require('../images/hiw1.png')}
-          alt="picture of cartoon dancers"
-        />
+        <img src={require('../images/hiw1.png')} alt="cartoon dancers" />
       </div>
     </div>
   );

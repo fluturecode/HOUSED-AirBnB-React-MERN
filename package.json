@@ -24,6 +24,7 @@
     "react-bootstrap": "^1.0.1",
     "react-dates": "^21.8.0",
     "react-dom": "^16.13.1",
+    "react-paypal-button": "^4.1.1",
     "react-router-dom": "^5.2.0",
     "react-simple-chatbot": "^0.6.1",
     "sendgrid": "^5.2.3",

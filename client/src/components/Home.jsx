@@ -7,6 +7,16 @@ import neighborhood from '../images/neighborhood.jpg';
 import membericon from '../images/membericon.jpg';
 import becomehost from '../images/becomehost.png';
 
+const homeImage = require('../images/homepage.jpg');
+const divStyle = {
+  backgroundImage: `url(${homeImage})`,
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  with: '1200px',
+  height: '800px'
+};
+
 const Home = () => {
   return (
     <div className="home">
@@ -20,7 +30,11 @@ const Home = () => {
         <div className="search-container">
           <Search />
         </div>
-        <img src={require('../images/blueroom.jpg')} alt="Cozy bedroom" />
+        <div className="background-image" style={divStyle}></div>
+        {/* <img
+          src={require('../images/housed.homepage.jpg')}
+          alt="Cozy bedroom"
+        /> */}
       </div>
       <div className="safety-list">
         <h1 className="header"> We Take Safety Seriously!</h1>

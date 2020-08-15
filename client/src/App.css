@@ -1,6 +1,13 @@
 * {
   font-family: Gill Sans, sans-serif;
-  color: rgb(104, 86, 86);
+}
+
+body {
+  --orange-color: #f46036ff;
+  --ltBlue-color: #5b85aaff;
+  --purple-color: #414770ff;
+  --violet-color: #372248ff;
+  --dark-color: ;
 }
 
 @media screen and (max-width: 480px) {

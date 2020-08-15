@@ -1,7 +1,8 @@
 .navbar {
   overflow: hidden;
-  background-color: #ffa500;
+  background-color: var(--orange-color);
 }
+
 .navbar a {
   float: left;
   color: white;
@@ -46,7 +47,6 @@
 }
 
 .nav-name {
-  /* background-color: lightseagreen; */
   margin-top: 15px;
   color: white;
 }

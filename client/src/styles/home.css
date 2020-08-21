@@ -9,7 +9,7 @@
   border: 5px solid black;
   width: 600px;
   height: 550px;
-  float: left;
+  float: right;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -70,7 +70,7 @@
 }
 
 .header {
-  color: #ffa500;
+  color: var(--orange-color);
   text-decoration: underline;
   padding-bottom: 50px;
   margin: auto;

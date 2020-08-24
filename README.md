@@ -1,4 +1,5 @@
-# Housed Final Project
+# Housed (Temp Living Booking Site)
+![Screen Shot 2020-07-14 at 3 35 41 PM](https://user-images.githubusercontent.com/59614789/90995002-91a45380-e588-11ea-9c04-431ad5dcb387.png)
 
 ## About
 

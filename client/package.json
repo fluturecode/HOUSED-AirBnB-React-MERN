@@ -7,10 +7,10 @@
     "bootstrap": "^4.5.0",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
-    "react-chatbot": "^0.0.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-simple-chatbot": "^0.6.1",
     "style-component": "^0.0.1",
     "styled-components": "^5.1.1"
   },

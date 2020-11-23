@@ -9,23 +9,23 @@ Housed serves as a MVP for a temporary housing application. It was developed usi
 
 - `git clone` this repo
 - `cd` into it.
-- `yarn install`
-- `cd client && yarn install`
-- `cp .env.sample .env`
+- `yarn`
+- `cd client && yarn`
+- `yarn dev` to run server and client concurrently
 
 In addition please refer to the package.json to see all required packages included in this project.
 
 ## Dev Dependencies
 
 -	Axios
--	Bootstrap
+-	Emotion styled-components
 -	Prettier
 -	React
 -	React-dom
 -	React-router-dom
 -	React-scripts
 -	Style-Component
--	Style-Components
+-	Styled-Components
 
 ## Available build commands
 

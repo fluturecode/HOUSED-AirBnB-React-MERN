@@ -23,7 +23,6 @@
     "server": "nodemon server.js",
     "client": "yarn run start --prefix client",
     "dev": "concurrently \"yarn start client\" \"yarn start server\"",
-    "heroku-postbuild": "cd client && yarn && yarn run build",
-    "prettify": "prettier '*/**/*.js' '*/**/*.jsx' '*/**/*.html' '*/**/*.css' --write"
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   }
 }

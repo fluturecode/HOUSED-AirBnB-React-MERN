@@ -5,15 +5,21 @@ import CustomChatbot from './chatbot/CustomChatbot';
 import bgcheck from '../images/bgcheck.png';
 import neighborhood from '../images/neighborhood.jpg';
 import membericon from '../images/membericon.jpg';
+import styled from '@emotion/styled';
 
-const HomeContainer = styled.div`
-`
+const HomeContainer = styled.div``;
 
-const MainContainer = styled.div`
-`
+const MainContainer = styled.div``;
 
-const BoxContainer = styled.div`
-`
+const BoxContainer = styled.div``,
+  BoxText1 = styled.div``,
+  BoxText2 = styled.div``;
+
+const SafetyContainer = styled.div``,
+  SafetyText1 = styled.div``,
+  SafetyText2 = styled.div``,
+  SafetyText3 = styled.div``,
+  SafetyText4 = styled.div``;
 
 const homeImage = require('../images/simon-rae-kB_KKcp8uTw-unsplash.jpg');
 const divStyle = {

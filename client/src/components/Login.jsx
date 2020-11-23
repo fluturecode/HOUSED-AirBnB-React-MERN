@@ -17,12 +17,12 @@ const Login = ({ history }) => {
         setLoggedIn(true);
         localStorage.setItem('token', data.token);
         history.push('/');
-        // console.log(data, 'response');
-        // setUser(data.user);
-        // localStorage.setItem('token', data.token);
-        // setLoggedIn(true);
-        // setEmail('');
-        // setPassword('');
+        console.log(data, 'response');
+        setUser(data.user);
+        localStorage.setItem('token', data.token);
+        setLoggedIn(true);
+        setEmail('');
+        setPassword('');
       })
       .catch((e) => console.log(e.message.toString(), 'Login error'));
   };

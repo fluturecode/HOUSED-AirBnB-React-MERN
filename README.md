@@ -1,41 +1,25 @@
 # Housed - Temporary Stay Booking Application (MERN Stack)
 ![Screen Shot 2020-07-14 at 3 35 41 PM](https://user-images.githubusercontent.com/59614789/90995002-91a45380-e588-11ea-9c04-431ad5dcb387.png)
 
-## About
-
-Housed serves as a MVP for a temporary housing application. It was developed using the MERN stack with React, MongoDB, Express, and Node.js. 
-
 ## Setup
 
 - `git clone` this repo
 - `cd` into it.
 - `yarn install`
 - `cd client && yarn install`
-- `cp .env.sample .env`
 
 In addition please refer to the package.json to see all required packages included in this project.
 
 ## Dev Dependencies
 
 -	Axios
--	Bootstrap
 -	Prettier
 -	React
 -	React-dom
 -	React-router-dom
 -	React-scripts
--	Style-Component
--	Style-Components
-
-## Available build commands
-
-Please reference to the package.json in the root directory for the build scripts:
-
-- `yarn dev`: Runs BOTH your Express.JS and React developer environment locally at the same time. Any logs coming from Express will be prefaced with `[0]`, any logs from `create-react-app` will be prefaced with `[1]`.
-- `yarn server`: Runs JUST your Express.JS server.
-- `yarn client`: Runs JUST your front-end React app.
-
-Open [http://localhost:3000] to view your local React app in the browser. The page will reload if you make edits.
+-	Emotion
+-	Styled-Components
 
 ## Additional Packages
 

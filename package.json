@@ -19,10 +19,9 @@
     "validator": "^13.1.17"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "server": "nodemon server.js",
-    "client": "yarn run start --prefix client",
-    "dev": "concurrently \"yarn start client\" \"yarn start server\"",
+    "dev": "concurrently \"cd server && yarn server\" \"cd client &&yarn start\"",
     "heroku-postbuild": "cd client && yarn && yarn run build"
   }
 }

@@ -21,8 +21,8 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "cd client && yarn run start",
-    "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+    "client": "yarn run start --prefix client",
+    "dev": "concurrently \"yarn start client\" \"yarn start server\"",
     "heroku-postbuild": "cd client && yarn && yarn run build",
     "prettify": "prettier '*/**/*.js' '*/**/*.jsx' '*/**/*.html' '*/**/*.css' --write"
   }

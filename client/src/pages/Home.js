@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/home.css';
-import Search from './Search';
-import CustomChatbot from './chatbot/CustomChatbot';
+import Search from '../components/Search';
+import CustomChatbot from '../components/chatbot/CustomChatbot';
 import bgcheck from '../images/bgcheck.png';
 import neighborhood from '../images/neighborhood.jpg';
 import membericon from '../images/membericon.jpg';

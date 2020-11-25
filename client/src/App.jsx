@@ -3,14 +3,14 @@ import { AppContextProvider } from './context/AppContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { Navigation } from './components/Navigation';
-import Signup from './components/Signup';
-import Listings from './components/Listings';
-import Login from './components/Login';
-import Home from './components/Home';
+import Signup from './pages/Signup';
+import Listings from './pages/Listings';
+import Login from './pages/Login';
+import Home from './pages/Home';
 import Footer from './components/Footer';
-import HowItWorks from './components/HowItWorks';
+import HowItWorks from './pages/HowItWorks';
 import ListingDetails from './components/ListingDetails';
-import Confirmation from './components/Confirmation';
+import Confirmation from './pages/Confirmation.js';
 
 const App = () => {
   return (

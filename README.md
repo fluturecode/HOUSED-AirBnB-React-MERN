@@ -18,7 +18,7 @@ In addition please refer to the package.json to see all required packages includ
 ## Dev Dependencies
 
 -	Axios
--	Emotion styled-components
+-	Emotion styled-components [https://emotion.sh/docs/styled]
 -	Prettier
 -	React
 -	React-dom

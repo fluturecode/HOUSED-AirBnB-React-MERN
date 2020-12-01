@@ -16,6 +16,8 @@ function Banner() {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    margin-left: 80px;
+    margin-right: 80px;
   `;
 
   const BannerSearch = styled.div`
@@ -24,7 +26,7 @@ function Banner() {
   `;
 
   const BannerInfo = styled.div`
-    background-color: rgb(66, 70, 70);
+    background-color: grey;
     color: white;
     padding-top: 14vh;
     padding-left: 50px;

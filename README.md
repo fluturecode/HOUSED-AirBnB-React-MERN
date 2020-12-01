@@ -14,13 +14,12 @@ In addition please refer to the package.json to see all required packages includ
 ## Dev Dependencies
 
 -	Axios
+-	Emotion styled-components [https://emotion.sh/docs/styled]
 -	Prettier
 -	React
 -	React-dom
 -	React-router-dom
 -	React-scripts
--	Emotion
--	Styled-Components
 
 ## Available build commands
 
@@ -31,7 +30,6 @@ Please reference to the package.json in the root directory for the build scripts
 - `yarn client`: Runs JUST your front-end React app.
 
 Open [http://localhost:3000] to view your local React app in the browser. The page will reload if you make edits.
-
 
 ## Additional Packages
 

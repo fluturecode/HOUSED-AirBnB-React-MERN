@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import '../styles/signup.css';
-import FileUpload from './FileUpload';
+import FileUpload from '../components/FileUpload';
 
 const initialState = {
   email: '',

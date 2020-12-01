@@ -7,6 +7,7 @@ import membericon from '../images/membericon.jpg';
 import styled from '@emotion/styled';
 import homeImage from '../images/homeImage.jpg';
 import Header from '../components/Header';
+import Banner from '../components/Banner';
 
 const HomeContainer = styled.div``;
 
@@ -19,18 +20,19 @@ const HomeImage = styled.img`
 
 const Home = () => {
   return (
-    <Header />
-    // Banner
-    // Search
-    // Cards
-    // <HomeContainer>
+    <>
+      <Header />
+      <Banner />
+      // Cards
+      {/* // <HomeContainer>
     //   <HomeImage src={homeImage} />
     //   <MainContainer>
     //     <Search />
     //   </MainContainer>
     //   <SafetyContainer></SafetyContainer>
     //   <CustomChatbot />
-    // </HomeContainer>
+    // </HomeContainer> */}
+    </>
   );
 };
 

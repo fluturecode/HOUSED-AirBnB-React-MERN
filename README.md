@@ -22,7 +22,7 @@ In addition please refer to the package.json to see all required packages includ
 - React-dom
 - React-router-dom
 - React-scripts
-- Reacd-date-range [https://www.npmjs.com/package/react-date-range]
+- Reacd-date-range [https://www.npmjs.com/package/react-date-range]. Also make sure to import into your modules: 'react-date-range/dist/styles.css' & 'react-date-range/dist/theme/default.css'
 
 ## Available build commands
 

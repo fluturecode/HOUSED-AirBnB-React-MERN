@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { Button } from '@material-ui/core';
-import Search from './Search.js';
+import DateSearch from './DateSearch.js';
 import { useHistory } from 'react-router-dom';
 import homeImage from './homeImage.jpg';
 
@@ -40,12 +40,8 @@ function Banner() {
     <>
       <BannerContainer>
         <BannerSearch>
-          {showSearch && <Search />}
-          <Button
-            onClick={() => setShowSearch(!showSearch)}
-            className="banner__searchButton"
-            variant="outlined"
-          >
+          {showSearch && <DateSearch />}
+          <Button onClick={() => setShowSearch(!showSearch)} variant="outlined">
             {showSearch ? 'Hide' : 'Search Dates'}
           </Button>
         </BannerSearch>

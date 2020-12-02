@@ -3,7 +3,7 @@ import '../styles/nav.css';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import Logout from './Logout';
-import logo from '../images/housed.png';
+// import logo from '../images/housed.png';
 
 export const Navigation = () => {
   const { loggedIn, setLoggedIn } = useContext(AppContext);
@@ -18,9 +18,7 @@ export const Navigation = () => {
   return (
     <div className="navbar">
       <Link to="/">
-        <div className="logo">
-          <img src={logo} alt="Housed logo" />
-        </div>
+        <div className="logo">{/* <img src={logo} alt="Housed logo" /> */}</div>
       </Link>
       <div className="nav-right">
         {loggedIn ? (

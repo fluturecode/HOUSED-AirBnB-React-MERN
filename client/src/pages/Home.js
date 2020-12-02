@@ -5,7 +5,7 @@ import bgcheck from '../images/bgcheck.png';
 import neighborhood from '../images/neighborhood.jpg';
 import membericon from '../images/membericon.jpg';
 import styled from '@emotion/styled';
-import homeImage from '../images/homeImage.jpg';
+// import homeImage from '../images/homeImage.jpg';
 import Header from '../components/Header';
 import Banner from '../components/Banner';
 
